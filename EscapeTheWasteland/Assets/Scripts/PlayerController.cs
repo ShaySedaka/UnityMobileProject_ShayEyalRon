@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject _joyStick;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void MovePlayer(Vector2 direction)
+    {
+
     }
 }

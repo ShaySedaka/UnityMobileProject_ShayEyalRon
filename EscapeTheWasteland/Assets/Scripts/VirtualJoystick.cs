@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class VirtualJoystick : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _joyButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +24,18 @@ public class VirtualJoystick : MonoBehaviour
             {
                 case TouchPhase.Began:
 
-                    Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     transform.position = touchPosition;
-                    gameObject.SetActive(true);
+                    //gameObject.SetActive(true);
                     break;
 
                 case TouchPhase.Moved:
 
+                    Vector3 touchPosition2 = Camera.main.ScreenToWorldPoint(touch.position);
+                    Vector3 direction = touchPosition2 - transform.position;
+                    direction.Normalize();
+
+                    _joyButton.transform.position += direction;
 
                     break;
             }
