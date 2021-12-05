@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class VirtualJoystick : MonoBehaviour
 {
+    public Vector2 Vector2Position { get => new Vector2(transform.position.x, transform.position.y); }
+
+    [SerializeField]
+    private float _radius;
+
+    [SerializeField]
+    private PlayerController _player;
+
+    [SerializeField]
+    private GameObject _joystickBackground;
+
     [SerializeField]
     private GameObject _joyButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _radius = _joystickBackground.transform.localScale.x / 2;
+        ToggleVisibility(false);
     }
 
     // Update is called once per frame
@@ -19,27 +31,43 @@ public class VirtualJoystick : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
+            
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    ToggleVisibility(true);
+                    Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     transform.position = touchPosition;
-                    //gameObject.SetActive(true);
+                    
                     break;
 
-                case TouchPhase.Moved:
+                case TouchPhase.Ended:
 
-                    Vector3 touchPosition2 = Camera.main.ScreenToWorldPoint(touch.position);
-                    Vector3 direction = touchPosition2 - transform.position;
-                    direction.Normalize();
+                    _joyButton.transform.position = transform.position;
+                    ToggleVisibility(false);
 
-                    _joyButton.transform.position += direction;
+                    break;
+
+                default:
+                    Vector2 touchPosition2 = Camera.main.ScreenToWorldPoint(touch.position);
+                    Vector2 delta = touchPosition2 - Vector2Position;
+
+                    if (delta.magnitude <= _radius)
+                    {
+                        _joyButton.transform.position = touchPosition2;
+                    }
+
+                    _player.MovePlayer(delta.normalized);
 
                     break;
             }
            
         }
+    }
+
+    private void ToggleVisibility(bool state)
+    {
+        _joystickBackground.SetActive(state);
+        _joyButton.SetActive(state);
     }
 }
