@@ -1,26 +1,80 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEditor;
 
 public class MapManager : MonoBehaviour
 {
-    [SerializeField][Range(0,100)]
-    int _initChance;
+    //have a grid for you hole map
+    [SerializeField]
+    Grid _grid;
 
-    [SerializeField][Range(1,8)]
-    int _birthLimit;
+    [SerializeField]
+    int _mapMaxX;
+    [SerializeField]
+    int _mapMinX;
+    [SerializeField]
+    int _mapMaxY;
+    [SerializeField]
+    int _mapMinY;
 
-    [SerializeField] [Range(1, 8)]
-    int _numR;
-    int _count = 0;
+    public int Width
+    {
+        get
+        {
+            return _mapMaxX - _mapMinX;
+        }
+    }
+    public int Height
+    {
+        get
+        {
+            return _mapMaxY - _mapMinY;
+        }
+    }
+
+    [SerializeField]
+    Tilemap _baseGround;
+
+    [SerializeField]
+    TileBase _baseGroundTile;
+
+    //paint it with base tile for map
+
+    private void Start()
+    {
+        CreateMap();
+    }
+    void CreateMap()
+    {
+        CreateTileLayer(_baseGround,_baseGroundTile,Width,Height,new Vector2(_mapMinX,_mapMinY));
+        CreateTileLayer(_forest,_forestTile,5,8,new Vector2(5,7));
+    }
+    void CreateTileLayer(Tilemap tileMap,TileBase tile, int width, int height, Vector2 startPos)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                tileMap.SetTile(new Vector3Int((int)startPos.x + x, (int)startPos.y + y, 0), tile);
+            }
+        }
+    }
+       
+    //make lists for every type of environment
+    //if the environment is on another type of environment move it
+    //paint that environment with a speciphic tile
+
+    //when spawning an object, know about it's environment type
+    //find one of the lists that he can spawn on and spawn it there
+
+
+
+
+
 
     private int[,] _terrainMap;
     public Vector3 tMapSize;
 
-    [SerializeField]
-    Tilemap _baseGround;
     [SerializeField]
     Tilemap _forest;
     [SerializeField]
@@ -31,42 +85,16 @@ public class MapManager : MonoBehaviour
     Tilemap _diamonds;
 
     [SerializeField]
-    Tile _baseGroundTile;
+    TileBase _forestTile;
     [SerializeField]
-    Tile _forestTile;
+    TileBase _ironTile;
     [SerializeField]
-    Tile _ironTile;
+    TileBase _goldTile;
     [SerializeField]
-    Tile _goldTile;
-    [SerializeField]
-    Tile _diamondTile;
+    TileBase _diamondTile;
 
-    int _width;
-    int _height;
 
-    public void doSim(int numR)
-    {
-        clearMap(false);
-        _width = (int)tMapSize.x;
-        _height = (int)tMapSize.y;
 
-        if(_terrainMap == null)
-        {
-            _terrainMap = new int[_width, _height];
-            InitPos();
-        }
-    }
-    public void InitPos()
-    {
-        for (int x = 0; x < _width; x++)
-        {
-            for (int y = 0; y < _height; y++)
-            {
-                _terrainMap[x, y] = Random.Range(1, 101) < _initChance ? 1 : 0;
-            }
-        }
-
-    }
     public void clearMap(bool complete)
     {
         _baseGround.ClearAllTiles();
@@ -80,14 +108,7 @@ public class MapManager : MonoBehaviour
             _terrainMap = null;
         }
     }
-    [SerializeField]
-    int _mapMaxX;
-    [SerializeField]
-    int _mapMinX;
-    [SerializeField]
-    int _mapMaxY;
-    [SerializeField]
-    int _mapMinY;
+
 
     private void Update()
     {
