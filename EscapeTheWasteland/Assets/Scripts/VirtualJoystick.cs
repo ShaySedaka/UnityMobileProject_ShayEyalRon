@@ -7,6 +7,9 @@ public class VirtualJoystick : MonoBehaviour
     public Vector2 Vector2Position { get => new Vector2(transform.position.x, transform.position.y); }
 
     [SerializeField]
+    Camera _mainCamera;
+
+    [SerializeField]
     private float _radius;
 
     [SerializeField]
@@ -36,7 +39,7 @@ public class VirtualJoystick : MonoBehaviour
             {
                 case TouchPhase.Began:
                     ToggleVisibility(true);
-                    Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    Vector2 touchPosition = _mainCamera.ScreenToWorldPoint(touch.position);
                     transform.position = touchPosition;
                     
                     break;
@@ -49,12 +52,16 @@ public class VirtualJoystick : MonoBehaviour
                     break;
 
                 default:
-                    Vector2 touchPosition2 = Camera.main.ScreenToWorldPoint(touch.position);
+                    Vector2 touchPosition2 = _mainCamera.ScreenToWorldPoint(touch.position);
                     Vector2 delta = touchPosition2 - Vector2Position;
 
                     if (delta.magnitude <= _radius)
                     {
                         _joyButton.transform.position = touchPosition2;
+                    }
+                    else
+                    {
+                        _joyButton.transform.position = transform.position + (new Vector3(delta.normalized.x, delta.normalized.y) * _radius);
                     }
 
                     _player.MovePlayer(delta.normalized);
