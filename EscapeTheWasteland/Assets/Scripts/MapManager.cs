@@ -47,7 +47,7 @@ public class MapManager : MonoBehaviour
     void CreateMap()
     {
         CreateTileLayer(_baseGround,_baseGroundTile,Width,Height,new Vector2(_mapMinX,_mapMinY));
-        CreateTileLayer(_forest,_forestTile,5,8,new Vector2(5,7));
+        CreateTileLayer(_forest,_forestTile,5,8,new Vector2(14,7));
     }
     void CreateTileLayer(Tilemap tileMap,TileBase tile, int width, int height, Vector2 startPos)
     {
