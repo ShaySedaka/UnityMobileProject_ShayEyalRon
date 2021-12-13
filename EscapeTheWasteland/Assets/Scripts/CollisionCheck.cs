@@ -16,9 +16,11 @@ public class CollisionCheck : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.isActiveAndEnabled)
-            Debug.Log("yea");
-    }
+    //public override void Physics.Overla
+
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+        
+    //        Debug.Log("yea");
+    //}
 }
