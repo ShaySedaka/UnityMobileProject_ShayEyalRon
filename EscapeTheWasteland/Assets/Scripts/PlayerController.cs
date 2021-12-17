@@ -7,11 +7,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _runSpeed;
 
+    [SerializeField]
+    private int _pickAxeLevel;
+
     private Collider2D[] _collidersWithinRange;
 
     Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
 
     private float _timeSinceLastMine = 1;
+
+    private PickAxe _pickAxe;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +27,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(resource.Key.ToString() + ": " + resource.Value);
         }
-        
+
+        _pickAxe = new PickAxe();
+        _pickAxe.Level = _pickAxeLevel;
+        _pickAxe.InitializePickaxe();
     }
 
     // Update is called once per frame
@@ -33,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void InitializeResourceInventory()
     {
+        
         _resourceInventory.Add(ResourceType.Wood, 0);
         _resourceInventory.Add(ResourceType.Stone, 0);
         _resourceInventory.Add(ResourceType.Iron, 0);
@@ -44,7 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         _timeSinceLastMine += Time.deltaTime;
 
-        if(_timeSinceLastMine >= 1)
+        if(_timeSinceLastMine >= _pickAxe.TimePerAttack)
         {
             _collidersWithinRange = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
 
@@ -53,8 +62,19 @@ public class PlayerController : MonoBehaviour
                 // Play Animation
                 foreach (var collider in _collidersWithinRange)
                 {
-                    collider.GetComponent<Resource>().AttemptToMine(this);
-                    Debug.Log("Ding!");
+                    Resource resourceRef = collider.GetComponent<Resource>();
+                    if (((int)resourceRef.Type) <= _pickAxe.Level)
+                    {
+                        
+                        resourceRef.AttemptToMine(this);
+                        Debug.Log("Ding!");
+                    }
+                    else
+                    {
+                        Debug.Log("Too Hard!");
+                    }
+                    
+                    
                 }
 
                 _timeSinceLastMine = 0;
