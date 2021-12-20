@@ -116,10 +116,10 @@ public class PlayerController : MonoBehaviour
     {
         if (_resourceInventory.ContainsKey(type))
         {      
-            _resourceInventory[type] += 3;
-            Debug.Log( type.ToString() + ": " + _resourceInventory[type] );
+            _resourceInventory[type] += 3; // MAGIC NUMBER          
         }
 
+        //update UI manager
         UIManager.Instance.UpdateResourceText(
             _resourceInventory[ResourceType.Wood],
             _resourceInventory[ResourceType.Stone],
