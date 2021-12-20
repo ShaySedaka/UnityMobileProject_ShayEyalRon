@@ -6,20 +6,11 @@ public class VirtualJoystick : MonoBehaviour
 {
     public Vector2 Vector2Position { get => new Vector2(transform.position.x, transform.position.y); }
 
-    [SerializeField]
-    Camera _mainCamera;
-
-    [SerializeField]
-    private float _radius;
-
-    [SerializeField]
-    private PlayerController _player;
-
-    [SerializeField]
-    private GameObject _joystickBackground;
-
-    [SerializeField]
-    private GameObject _joyButton;
+    [SerializeField] Camera _mainCamera;
+    [SerializeField] private float _radius;
+    [SerializeField] private PlayerController _player;
+    [SerializeField] private GameObject _joystickBackground;
+    [SerializeField] private GameObject _joyButton;
 
     // Start is called before the first frame update
     void Start()

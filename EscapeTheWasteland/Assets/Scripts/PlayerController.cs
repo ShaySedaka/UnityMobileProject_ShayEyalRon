@@ -11,11 +11,8 @@ public class PlayerController : MonoBehaviour
     private int _pickAxeLevel;
 
     private Collider2D[] _collidersWithinRange;
-
-    Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
-
+    private Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
     private float _timeSinceLastMine = 1;
-
     private PickAxe _pickAxe;
 
     // Start is called before the first frame update
@@ -40,8 +37,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void InitializeResourceInventory()
-    {
-        
+    {   
         _resourceInventory.Add(ResourceType.Wood, 0);
         _resourceInventory.Add(ResourceType.Stone, 0);
         _resourceInventory.Add(ResourceType.Iron, 0);
@@ -53,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         _timeSinceLastMine += Time.deltaTime;
 
-        if(_timeSinceLastMine >= _pickAxe.TimePerAttack)
+        if(_timeSinceLastMine >= _pickAxe.TimePerMineHit)
         {
             _collidersWithinRange = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
 
@@ -72,9 +68,7 @@ public class PlayerController : MonoBehaviour
                     else
                     {
                         Debug.Log("Too Hard!");
-                    }
-                    
-                    
+                    }                
                 }
 
                 _timeSinceLastMine = 0;
@@ -94,9 +88,7 @@ public class PlayerController : MonoBehaviour
     public void MovePlayer(Vector2 direction)
     {
         Vector3 v3Direction = new Vector3(direction.x, direction.y);
-
         transform.position += v3Direction * _runSpeed * Time.deltaTime;
-
         RotatePlayer(v3Direction);
 
     }
