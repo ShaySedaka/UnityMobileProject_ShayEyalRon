@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
         _resourceInventory.Add(ResourceType.Iron, 0);
         _resourceInventory.Add(ResourceType.Gold, 0);
         _resourceInventory.Add(ResourceType.Oil, 0);
+
+        UIManager.Instance.InitializeAllTexts();
     }
 
     private void AttemptToMineResourcesAroundPlayer()
@@ -117,6 +119,13 @@ public class PlayerController : MonoBehaviour
             _resourceInventory[type] += 3;
             Debug.Log( type.ToString() + ": " + _resourceInventory[type] );
         }
+
+        UIManager.Instance.UpdateResourceText(
+            _resourceInventory[ResourceType.Wood],
+            _resourceInventory[ResourceType.Stone],
+            _resourceInventory[ResourceType.Iron],
+            _resourceInventory[ResourceType.Gold],
+            _resourceInventory[ResourceType.Oil]);
     }
 
     public void MovePlayer(Vector2 direction)
