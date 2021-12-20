@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(DestroyAfterSecs(3f));
     }
 
     // Update is called once per frame
@@ -21,6 +21,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Destroy(gameObject);
+    }
+
+
+    public IEnumerator DestroyAfterSecs(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }
 }
