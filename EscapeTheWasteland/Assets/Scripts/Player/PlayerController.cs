@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _runSpeed;
     [SerializeField] private int _pickAxeLevel;
+    [SerializeField] private ParticleSystem _miningEffect;
 
     private Collider2D[] _collidersWithinRange;
     private Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
                     {
                         
                         resourceRef.AttemptToMine(this);
+                        _miningEffect.Play();
                         Debug.Log("Ding!");
                     }
                     else
