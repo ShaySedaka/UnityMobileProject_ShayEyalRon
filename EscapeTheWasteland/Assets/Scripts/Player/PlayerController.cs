@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _runSpeed;
     [SerializeField] private int _pickAxeLevel;
     [SerializeField] private ParticleSystem _miningEffect;
+    [SerializeField] private GameObject _pickaxeSprite;
+    [SerializeField] private GameObject _gunSprite;
 
     private Collider2D[] _collidersWithinRange;
     private Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
         if(_timeSinceLastMine >= _pickAxe.TimePerMineHit)
         {
-            _collidersWithinRange = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
+            _collidersWithinRange = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 1.5f);
 
             if (_collidersWithinRange.Length > 0)
             {
@@ -59,10 +61,13 @@ public class PlayerController : MonoBehaviour
                 foreach (var collider in _collidersWithinRange)
                 {
                     Resource resourceRef = collider.GetComponent<Resource>();
-                    if (((int)resourceRef.Type) <= _pickAxe.Level)
+                    if (!collider.tag.Equals("Player") && ((int)resourceRef.Type) <= _pickAxe.Level)
                     {
                         
                         resourceRef.AttemptToMine(this);
+
+                        Debug.Log("Pulling out pickaxe");
+                        PullOutPickaxe();
                         _miningEffect.Play();
                         Debug.Log("Ding!");
                     }
@@ -74,13 +79,21 @@ public class PlayerController : MonoBehaviour
 
                 _timeSinceLastMine = 0;
             }
+            else
+            {
+                _pickaxeSprite.SetActive(false);
+            }
+
+            
         }
     }
 
     public void AddResourceToInventory(ResourceType type)
     {
-        if(_resourceInventory.ContainsKey(type))
-        {
+        Debug.Log("Returning PickAxe");
+        _pickaxeSprite.SetActive(false);
+        if (_resourceInventory.ContainsKey(type))
+        {      
             _resourceInventory[type] += 3;
             Debug.Log( type.ToString() + ": " + _resourceInventory[type] );
         }
@@ -100,5 +113,18 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
+
+    private void PullOutPickaxe()
+    {
+        _gunSprite.SetActive(false);
+        _pickaxeSprite.SetActive(true);
+    }
+
+    private void PullOutGun()
+    {
+        _pickaxeSprite.SetActive(false);
+        _gunSprite.SetActive(true);
+        
+    }
 
 }

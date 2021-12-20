@@ -39,8 +39,9 @@ public class Resource : MonoBehaviour
         _health--;
         if (_health <= 0)
         {
+            gameObject.SetActive(false);
             player.AddResourceToInventory(Type);
-            Destroy(gameObject);
+            
         }
     }
 }

@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "afb3e0e5",
+    "m_SelectedDeviceId": "ad5a58d1",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "ad5a58d1",
+        "name": "com.DefaultCompany.com.unity.template.mobile2D",
+        "processId": 26749,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -18,6 +18,18 @@
             "deviceId": "afb3e0e5",
             "name": "com.android.settings",
             "processId": 13767,
+            "exited": false
+        },
+        {
+            "deviceId": "ad5a58d1",
+            "name": "com.unity3d.mobileremote",
+            "processId": 22399,
+            "exited": false
+        },
+        {
+            "deviceId": "ad5a58d1",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 26749,
             "exited": false
         }
     ],
