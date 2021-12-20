@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            LookAtEnemy();
             TryToShootEnemy();
         }
 
@@ -122,7 +123,11 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 v3Direction = new Vector3(direction.x, direction.y);
         transform.position += v3Direction * RunSpeed * Time.deltaTime;
-        RotatePlayer(v3Direction);
+
+        if (!_detectedEnemy)
+        {
+            RotatePlayer(v3Direction);
+        }
 
     }
 
@@ -188,4 +193,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void LookAtEnemy()
+    {
+        Vector3 shotDirection = (_detectedEnemy.transform.position - gameObject.transform.position).normalized;
+        RotatePlayer(shotDirection);
+    }
 }
