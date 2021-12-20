@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _runSpeed: 1
-  _pickAxeLevel: 1
+  _pickAxeLevel: 3
 --- !u!50 &1347740520
 Rigidbody2D:
   serializedVersion: 4
