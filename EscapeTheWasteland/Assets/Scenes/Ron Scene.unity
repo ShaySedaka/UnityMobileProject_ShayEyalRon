@@ -5714,8 +5714,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _hp: 10
-  _fireRateInSeconds: 0.6
-  _detectionRadius: 4
+  _fireRateInSeconds: 0.5
+  _detectionRadius: 5
   _bulletPrefab: {fileID: 1671450011}
   _miningEffect: {fileID: 1125544088}
   _pickaxeSprite: {fileID: 1506097369}
@@ -6058,7 +6058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b10929a90f312469e394812c44be12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletSpeed: 10
+  _bulletSpeed: 15
 --- !u!212 &1671450015
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6100,7 +6100,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.24056602, b: 0.6709358, a: 1}
+  m_Color: {r: 1, g: 0.93297744, b: 0.33490568, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6468,6 +6468,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4774444384103430060, guid: f834844bfdb446b4393388364ba0d845, type: 3}
+      propertyPath: _detectionRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4774444384103430061, guid: f834844bfdb446b4393388364ba0d845, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -6523,6 +6527,18 @@ PrefabInstance:
     - target: {fileID: 4774444385739890449, guid: f834844bfdb446b4393388364ba0d845, type: 3}
       propertyPath: m_Name
       value: Enemy Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774444385739890453, guid: f834844bfdb446b4393388364ba0d845, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7028669
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774444385739890453, guid: f834844bfdb446b4393388364ba0d845, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774444385739890453, guid: f834844bfdb446b4393388364ba0d845, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8679245
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f834844bfdb446b4393388364ba0d845, type: 3}

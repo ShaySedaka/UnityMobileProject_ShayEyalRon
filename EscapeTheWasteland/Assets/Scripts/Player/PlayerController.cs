@@ -50,10 +50,12 @@ public class PlayerController : MonoBehaviour
 
         if(!_detectedEnemy)
         {
-            MineResourcesAroundPlayer();
+            StartCoroutine(PutGunAway());
+            AttemptToMineResourcesAroundPlayer();
         }
         else
         {
+            PullOutGun();
             LookAtEnemy();
             TryToShootEnemy();
         }
@@ -78,7 +80,7 @@ public class PlayerController : MonoBehaviour
         _resourceInventory.Add(ResourceType.Oil, 0);
     }
 
-    private void MineResourcesAroundPlayer()
+    private void AttemptToMineResourcesAroundPlayer()
     {
         _timeSinceLastMine += Time.deltaTime;
 
@@ -154,7 +156,12 @@ public class PlayerController : MonoBehaviour
     {
         _pickaxeSprite.SetActive(false);
         _gunSprite.SetActive(true);
-        
+    }
+
+    private IEnumerator PutGunAway()
+    {
+        yield return new WaitForSeconds(1.5f);
+        _gunSprite.SetActive(false);
     }
 
     private void ScoutForEnemy()
