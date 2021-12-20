@@ -56,6 +56,7 @@ public class VirtualJoystick : MonoBehaviour
                     }
 
                     _player.MovePlayer(delta.normalized);
+                    MoveJoystickWithPlayer(delta.normalized);
 
                     break;
             }
@@ -67,5 +68,13 @@ public class VirtualJoystick : MonoBehaviour
     {
         _joystickBackground.SetActive(state);
         _joyButton.SetActive(state);
+    }
+
+    private void MoveJoystickWithPlayer(Vector3 direction)
+    {
+
+        Vector3 v3Direction = new Vector3(direction.x, direction.y);
+        transform.position += v3Direction * _player.RunSpeed * Time.deltaTime;
+
     }
 }

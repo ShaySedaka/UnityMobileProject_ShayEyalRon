@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float _runSpeed;
-
-    [SerializeField]
-    private int _pickAxeLevel;
+    [SerializeField] private float _runSpeed;
+    [SerializeField] private int _pickAxeLevel;
 
     private Collider2D[] _collidersWithinRange;
     private Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
     private float _timeSinceLastMine = 1;
     private PickAxe _pickAxe;
+
+    public float RunSpeed { get => _runSpeed;}
 
     // Start is called before the first frame update
     void Start()
@@ -88,7 +87,7 @@ public class PlayerController : MonoBehaviour
     public void MovePlayer(Vector2 direction)
     {
         Vector3 v3Direction = new Vector3(direction.x, direction.y);
-        transform.position += v3Direction * _runSpeed * Time.deltaTime;
+        transform.position += v3Direction * RunSpeed * Time.deltaTime;
         RotatePlayer(v3Direction);
 
     }
@@ -98,7 +97,6 @@ public class PlayerController : MonoBehaviour
         float angle = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
-
 
 
 }

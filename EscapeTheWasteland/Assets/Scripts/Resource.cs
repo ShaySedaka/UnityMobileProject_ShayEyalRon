@@ -14,7 +14,7 @@ public enum ResourceType
 public class Resource : MonoBehaviour
 {
     [SerializeField]
-    private int _health;
+    private int _health = 5;
 
     [SerializeField]
     private ResourceType _type;
@@ -26,7 +26,6 @@ public class Resource : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _health = 10;
     }
 
     // Update is called once per frame
