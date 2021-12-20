@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
     public enum EnemyState
 {
     IDLE,
@@ -10,7 +9,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 { 
-
     [SerializeField] int _hp = 5;
     [SerializeField] float _fireRateInSeconds = 0.6f;
     [SerializeField] float _detectionRadius = 20f;
@@ -121,4 +119,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("Enemy hit with damage: " + damage);
+
+        _hp -= damage;
+
+        if(_hp <= 0)
+        {
+            OnEnemyDeath();
+        }
+    }
+
+    private void OnEnemyDeath()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _fireRateInSeconds = 0.6f;
     [SerializeField] float _detectionRadius = 4f;
     [SerializeField] GameObject _bulletPrefab;
+    [SerializeField] int _gunPerShotDamage;
 
     [SerializeField] private ParticleSystem _miningEffect;
     [SerializeField] private GameObject _pickaxeSprite;
@@ -184,7 +185,6 @@ public class PlayerController : MonoBehaviour
             {
                 _detectedEnemy = col.gameObject;
                 _wasEnemySpotted = true;
-                Debug.Log("Enemy Found!");
                 break;
             }
         }
@@ -204,6 +204,7 @@ public class PlayerController : MonoBehaviour
             GameObject newBullet = Instantiate(_bulletPrefab, transform);
             newBullet.transform.parent = null;
             newBullet.SetActive(true);
+            newBullet.GetComponent<Bullet>().BulletDamage = _gunPerShotDamage;
 
             _timeToNextShot = _fireRateInSeconds;
         }

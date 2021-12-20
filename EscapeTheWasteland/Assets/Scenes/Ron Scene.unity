@@ -7590,6 +7590,7 @@ MonoBehaviour:
   _fireRateInSeconds: 0.5
   _detectionRadius: 5
   _bulletPrefab: {fileID: 1671450011}
+  _gunPerShotDamage: 1
   _miningEffect: {fileID: 1125544088}
   _pickaxeSprite: {fileID: 1506097369}
   _gunSprite: {fileID: 777833487}
@@ -8020,6 +8021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpeed: 15
+  _bulletDamage: 0
 --- !u!212 &1671450015
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9142,7 +9144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 955373725588197203, guid: 3551f259e5d0b054d962bb6ba587cb76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.73
+      value: 10.92
       objectReference: {fileID: 0}
     - target: {fileID: 955373725588197203, guid: 3551f259e5d0b054d962bb6ba587cb76, type: 3}
       propertyPath: m_LocalPosition.z
