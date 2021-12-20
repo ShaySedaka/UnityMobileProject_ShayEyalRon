@@ -13,6 +13,7 @@ public enum ResourceType
 
 public class Resource : MonoBehaviour
 {
+    [SerializeField]
     private int _health;
 
     [SerializeField]
