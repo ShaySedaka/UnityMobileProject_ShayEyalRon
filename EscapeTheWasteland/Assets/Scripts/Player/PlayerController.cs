@@ -136,7 +136,9 @@ public class PlayerController : MonoBehaviour
     public void RotatePlayer(Vector3 direction)
     {
         float angle = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        //transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle)), 0.2f);
+
     }
 
     private void PullOutPickaxe()

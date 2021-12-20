@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 5
-  _fireRateInSeconds: 0.6
+  _fireRateInSeconds: 0.8
   _detectionRadius: 4
   _alertEffect: {fileID: 4774444384229804544}
   _bulletPrefab: {fileID: 4774444385739890449}
@@ -87,7 +87,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.063385725, y: -0.2167387}
+  m_Offset: {x: 0.012712002, y: -0.2167387}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -98,7 +98,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5520701, y: 1.5561597}
+  m_Size: {x: 1.7042656, y: 1.5561597}
   m_EdgeRadius: 0
 --- !u!1 &4774444384229804544
 GameObject:
@@ -5013,8 +5013,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4774444385739890449}
   m_LocalRotation: {x: -0, y: -0, z: 0.09465779, w: 0.99550986}
-  m_LocalPosition: {x: 0.61000013, y: 0.9, z: 0}
-  m_LocalScale: {x: 0.13753001, y: 0.40749633, z: 0.40749633}
+  m_LocalPosition: {x: 0.584, y: 1.017, z: 0}
+  m_LocalScale: {x: 0.3328742, y: 0.33287415, z: 1.9363}
   m_Children: []
   m_Father: {fileID: 4774444384103430063}
   m_RootOrder: 2
@@ -5060,7 +5060,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.9056604, g: 0, b: 0.8124355, a: 1}
+  m_Color: {r: 0.5377358, g: 0.0076094554, b: 0.042467352, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5082,7 +5082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b10929a90f312469e394812c44be12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletSpeed: 10
+  _bulletSpeed: 3
 --- !u!61 &4774444385739890451
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5093,7 +5093,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
