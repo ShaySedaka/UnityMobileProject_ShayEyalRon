@@ -6,6 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _runSpeed;
     [SerializeField] private int _pickAxeLevel;
+    [SerializeField] float _miningRadius = 1f;
+    [SerializeField] LayerMask _miningLayerMask;
+
+    [SerializeField] int _hp = 10;
+    [SerializeField] float _fireRateInSeconds = 0.6f;
+    [SerializeField] float _detectionRadius = 4f;
+    [SerializeField] GameObject _bulletPrefab;
+
     [SerializeField] private ParticleSystem _miningEffect;
     [SerializeField] private GameObject _pickaxeSprite;
     [SerializeField] private GameObject _gunSprite;
@@ -14,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
     private float _timeSinceLastMine = 1;
     private PickAxe _pickAxe;
+
+    private GameObject _detectedEnemy;
+    private float _timeToNextShot = 0f;
 
     public float RunSpeed { get => _runSpeed;}
 
@@ -35,7 +46,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MineResourcesAroundPlayer();
+        ScoutForEnemy();
+
+        if(!_detectedEnemy)
+        {
+            MineResourcesAroundPlayer();
+        }
+        else
+        {
+            TryToShootEnemy();
+        }
+
+        
+    }
+
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, _detectionRadius);
+        Gizmos.DrawWireSphere(transform.position, _miningRadius);
     }
 
     private void InitializeResourceInventory()
@@ -53,38 +83,27 @@ public class PlayerController : MonoBehaviour
 
         if(_timeSinceLastMine >= _pickAxe.TimePerMineHit)
         {
-            _collidersWithinRange = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 1.5f);
+            _collidersWithinRange = Physics2D.OverlapCircleAll(transform.position, _miningRadius, _miningLayerMask);
 
             if (_collidersWithinRange.Length > 0)
             {
-                // Play Animation
                 foreach (var collider in _collidersWithinRange)
                 {
                     Resource resourceRef = collider.GetComponent<Resource>();
-                    if (!collider.tag.Equals("Player") && ((int)resourceRef.Type) <= _pickAxe.Level)
+                    if (resourceRef != null && ((int)resourceRef.Type) <= _pickAxe.Level)
                     {
-                        
                         resourceRef.AttemptToMine(this);
-
-                        Debug.Log("Pulling out pickaxe");
                         PullOutPickaxe();
                         _miningEffect.Play();
-                        Debug.Log("Ding!");
                     }
                     else
                     {
-                        Debug.Log("Too Hard!");
-                    }                
+                        Debug.Log(collider.gameObject.name + " is Too Hard!");
+                    }
                 }
 
                 _timeSinceLastMine = 0;
-            }
-            else
-            {
-                _pickaxeSprite.SetActive(false);
-            }
-
-            
+            }          
         }
     }
 
@@ -113,11 +132,17 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
-
     private void PullOutPickaxe()
     {
         _gunSprite.SetActive(false);
         _pickaxeSprite.SetActive(true);
+        StartCoroutine(ReturnPickAxe());
+    }
+
+    private IEnumerator ReturnPickAxe()
+    {
+        yield return new WaitForSeconds(2f);
+        _pickaxeSprite.SetActive(false);
     }
 
     private void PullOutGun()
@@ -125,6 +150,42 @@ public class PlayerController : MonoBehaviour
         _pickaxeSprite.SetActive(false);
         _gunSprite.SetActive(true);
         
+    }
+
+    private void ScoutForEnemy()
+    {
+        bool _wasEnemySpotted = false;
+
+        Collider2D[] _collidersWithinRange = Physics2D.OverlapCircleAll(transform.position, _detectionRadius);
+        foreach (Collider2D col in _collidersWithinRange)
+        {
+            if (col.tag.Equals("Enemy"))
+            {
+                _detectedEnemy = col.gameObject;
+                _wasEnemySpotted = true;
+                Debug.Log("Enemy Found!");
+                break;
+            }
+        }
+
+        if(!_wasEnemySpotted)
+        {
+            _detectedEnemy = null;
+        }
+    }
+
+    private void TryToShootEnemy()
+    {
+        _timeToNextShot -= Time.deltaTime;
+
+        if (_timeToNextShot <= 0)
+        {
+            GameObject newBullet = Instantiate(_bulletPrefab, transform);
+            newBullet.transform.parent = null;
+            newBullet.SetActive(true);
+
+            _timeToNextShot = _fireRateInSeconds;
+        }
     }
 
 }

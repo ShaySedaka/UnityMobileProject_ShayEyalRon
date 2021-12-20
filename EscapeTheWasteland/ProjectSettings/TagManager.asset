@@ -8,6 +8,8 @@ TagManager:
   - Gold
   - Iron
   - Diamonds
+  - Resource
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Icons
   - Background
-  - 
+  - Resources
   - 
   - 
   - 
