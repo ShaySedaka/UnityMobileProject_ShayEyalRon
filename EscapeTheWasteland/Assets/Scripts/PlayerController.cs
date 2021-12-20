@@ -97,19 +97,14 @@ public class PlayerController : MonoBehaviour
 
         transform.position += v3Direction * _runSpeed * Time.deltaTime;
 
-        //RotatePlayer(v3Direction); ????
+        RotatePlayer(v3Direction);
 
     }
 
     public void RotatePlayer(Vector3 direction)
     {
-        Vector3 targetDirection = direction - transform.position;
-
-        float singleStep = _runSpeed * Time.deltaTime;
-
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-
-        transform.rotation = Quaternion.LookRotation(newDirection);
+        float angle = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
 
