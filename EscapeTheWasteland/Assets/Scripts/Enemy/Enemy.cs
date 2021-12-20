@@ -16,14 +16,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] float _detectionRadius = 20f;
 
     [SerializeField] GameObject _alertEffect;
+    [SerializeField] GameObject _bulletPrefab;
 
     private EnemyState _currentState;
     private GameObject _detectedPlayer;
+    private float _timeToNextShot;
 
     // Start is called before the first frame update
     void Start()
     {
         _currentState = EnemyState.IDLE;
+        _timeToNextShot = _fireRateInSeconds;
     }
 
     void OnDrawGizmos()
@@ -65,12 +68,30 @@ public class Enemy : MonoBehaviour
         _alertEffect.SetActive(true);
         Vector3 shotDirection = (_detectedPlayer.transform.position - gameObject.transform.position).normalized;
         RotateEnemy(shotDirection);
+
+        ShootIfPossible();
+
+
     }
 
     private void OnIdle()
     {
         _alertEffect.SetActive(false);
         
+    }
+
+    private void ShootIfPossible()
+    {
+        _timeToNextShot -= Time.deltaTime;
+
+        if(_timeToNextShot <= 0)
+        {
+            GameObject newBullet = Instantiate(_bulletPrefab, transform);
+            newBullet.transform.parent = null;
+            newBullet.SetActive(true);
+
+            _timeToNextShot = _fireRateInSeconds;
+        }
     }
 
     private void UpdateEnemyState()
