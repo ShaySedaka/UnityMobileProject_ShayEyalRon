@@ -112,8 +112,6 @@ public class PlayerController : MonoBehaviour
 
     public void AddResourceToInventory(ResourceType type)
     {
-        Debug.Log("Returning PickAxe");
-        _pickaxeSprite.SetActive(false);
         if (_resourceInventory.ContainsKey(type))
         {      
             _resourceInventory[type] += 3;
