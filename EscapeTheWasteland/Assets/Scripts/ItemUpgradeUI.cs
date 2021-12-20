@@ -4,20 +4,31 @@ public class ItemUpgradeUI : MonoBehaviour
 {
     [SerializeField]
     ResourceCostUI _woodUIHolder;
+    int _woodCost;
     [SerializeField]
     ResourceCostUI _stoneUIHolder;
+    int _stoneCost;
     [SerializeField]
     ResourceCostUI _ironUIHolder;
+    int _ironCost;
     [SerializeField]
     ResourceCostUI _goldUIHolder;
+    int _goldCost;
     [SerializeField]
     ResourceCostUI _DiamondsUIHolder;
+    int _diamondCost;
     private void Start()
     {
         SetUpgradeCost(0, 0, 0, 2, 500);
     }
     public void SetUpgradeCost(int woodAmount, int stoneAmount, int ironAmount, int goldAmount, int DiamondAmount)
     {
+        _woodCost = woodAmount;
+        _stoneCost = stoneAmount;
+        _ironCost = ironAmount;
+        _goldCost = goldAmount;
+        _diamondCost = DiamondAmount;
+
         if(woodAmount != 0 )
         {
             _woodUIHolder.ActivateCost(woodAmount);
@@ -38,5 +49,9 @@ public class ItemUpgradeUI : MonoBehaviour
         {
             _DiamondsUIHolder.ActivateCost(DiamondAmount);
         }
+    }
+    public void OnUpgrade()
+    {
+        //if player has enough resources than use them and upgrade item;
     }
 }
