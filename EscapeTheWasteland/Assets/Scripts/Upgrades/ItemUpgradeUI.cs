@@ -17,10 +17,6 @@ public class ItemUpgradeUI : MonoBehaviour
     [SerializeField]
     ResourceCostUI _DiamondsUIHolder;
     int _diamondCost;
-    private void Start()
-    {
-        SetUpgradeCost(0, 0, 0, 2, 500);
-    }
     public void SetUpgradeCost(int woodAmount, int stoneAmount, int ironAmount, int goldAmount, int DiamondAmount)
     {
         _woodCost = woodAmount;
