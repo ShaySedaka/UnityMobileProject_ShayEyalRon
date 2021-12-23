@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int _hp = 5;
     [SerializeField] float _fireRateInSeconds = 0.6f;
     [SerializeField] float _detectionRadius = 20f;
+    [SerializeField] int _bulletDamage = 1;
 
     [SerializeField] GameObject _alertEffect;
     [SerializeField] GameObject _bulletPrefab;
@@ -88,6 +89,7 @@ public class Enemy : MonoBehaviour
             GameObject newBullet = Instantiate(_bulletPrefab, transform);
             newBullet.transform.parent = null;
             newBullet.SetActive(true);
+            newBullet.GetComponent<Bullet>().BulletDamage = _bulletDamage;
 
             _timeToNextShot = _fireRateInSeconds;
         }

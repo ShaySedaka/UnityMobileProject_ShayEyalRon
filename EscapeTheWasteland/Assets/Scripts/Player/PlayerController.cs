@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _miningRadius = 1f;
     [SerializeField] LayerMask _miningLayerMask;
 
-    [SerializeField] int _hp = 10;
+    
     [SerializeField] float _fireRateInSeconds = 0.6f;
     [SerializeField] float _detectionRadius = 4f;
     [SerializeField] GameObject _bulletPrefab;
@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
 
     public float RunSpeed { get => _runSpeed;}
 
-    // Start is called before the first frame update
     void Start()
     {
         InitializeResourceInventory();
@@ -44,7 +43,6 @@ public class PlayerController : MonoBehaviour
         _pickAxe.InitializePickaxe();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ScoutForEnemy();
@@ -59,9 +57,7 @@ public class PlayerController : MonoBehaviour
             PullOutGun();
             LookAtEnemy();
             TryToShootEnemy();
-        }
-
-        
+        }      
     }
 
     void OnDrawGizmos()
@@ -205,6 +201,7 @@ public class PlayerController : MonoBehaviour
             newBullet.transform.parent = null;
             newBullet.SetActive(true);
             newBullet.GetComponent<Bullet>().BulletDamage = _gunPerShotDamage;
+            newBullet.GetComponent<Bullet>().FromPlayer = true;
 
             _timeToNextShot = _fireRateInSeconds;
         }
@@ -215,4 +212,5 @@ public class PlayerController : MonoBehaviour
         Vector3 shotDirection = (_detectedEnemy.transform.position - gameObject.transform.position).normalized;
         RotatePlayer(shotDirection);
     }
+
 }
