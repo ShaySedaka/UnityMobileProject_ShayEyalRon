@@ -28,12 +28,13 @@ public class PlayerController : MonoBehaviour
     private float _timeToNextShot = 0f;
 
     public float RunSpeed { get => _runSpeed;}
+    public Dictionary<ResourceType, int> ResourceInventory { get => _resourceInventory;}
 
     void Start()
     {
         InitializeResourceInventory();
 
-        foreach (var resource in _resourceInventory)
+        foreach (var resource in ResourceInventory)
         {
             Debug.Log(resource.Key.ToString() + ": " + resource.Value);
         }
@@ -70,11 +71,11 @@ public class PlayerController : MonoBehaviour
 
     private void InitializeResourceInventory()
     {   
-        _resourceInventory.Add(ResourceType.Wood, 0);
-        _resourceInventory.Add(ResourceType.Stone, 0);
-        _resourceInventory.Add(ResourceType.Iron, 0);
-        _resourceInventory.Add(ResourceType.Gold, 0);
-        _resourceInventory.Add(ResourceType.Oil, 0);
+        ResourceInventory.Add(ResourceType.Wood, 0);
+        ResourceInventory.Add(ResourceType.Stone, 0);
+        ResourceInventory.Add(ResourceType.Iron, 0);
+        ResourceInventory.Add(ResourceType.Gold, 0);
+        ResourceInventory.Add(ResourceType.Oil, 0);
 
         UIManager.Instance.InitializeAllTexts();
     }
@@ -111,18 +112,18 @@ public class PlayerController : MonoBehaviour
 
     public void AddResourceToInventory(ResourceType type)
     {
-        if (_resourceInventory.ContainsKey(type))
+        if (ResourceInventory.ContainsKey(type))
         {      
-            _resourceInventory[type] += 3; // MAGIC NUMBER          
+            ResourceInventory[type] += 3; // MAGIC NUMBER          
         }
 
         //update UI manager
         UIManager.Instance.UpdateResourceText(
-            _resourceInventory[ResourceType.Wood],
-            _resourceInventory[ResourceType.Stone],
-            _resourceInventory[ResourceType.Iron],
-            _resourceInventory[ResourceType.Gold],
-            _resourceInventory[ResourceType.Oil]);
+            ResourceInventory[ResourceType.Wood],
+            ResourceInventory[ResourceType.Stone],
+            ResourceInventory[ResourceType.Iron],
+            ResourceInventory[ResourceType.Gold],
+            ResourceInventory[ResourceType.Oil]);
     }
 
     public void MovePlayer(Vector2 direction)
