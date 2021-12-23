@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _currentState = EnemyState.IDLE;
-        _timeToNextShot = _fireRateInSeconds;
+        _timeToNextShot = 0;
     }
 
     void OnDrawGizmos()
