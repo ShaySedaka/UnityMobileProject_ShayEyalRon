@@ -8,12 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int _pickAxeLevel;
     [SerializeField] float _miningRadius = 1f;
     [SerializeField] LayerMask _miningLayerMask;
-
-    
-    [SerializeField] float _fireRateInSeconds = 0.6f;
+   
     [SerializeField] float _detectionRadius = 4f;
     [SerializeField] GameObject _bulletPrefab;
-    [SerializeField] int _gunPerShotDamage;
+    
 
     [SerializeField] private ParticleSystem _miningEffect;
     [SerializeField] private GameObject _pickaxeSprite;
@@ -22,7 +20,9 @@ public class PlayerController : MonoBehaviour
     private Collider2D[] _collidersWithinRange;
     private Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
     private float _timeSinceLastMine = 1;
+
     private PickAxe _pickAxe;
+    private Gun _gun;
 
     private GameObject _detectedEnemy;
     private float _timeToNextShot = 0f;
@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
         ResourceInventory.Add(ResourceType.Wood, 0);
         ResourceInventory.Add(ResourceType.Stone, 0);
         ResourceInventory.Add(ResourceType.Iron, 0);
-        ResourceInventory.Add(ResourceType.Gold, 0);
         ResourceInventory.Add(ResourceType.Oil, 0);
 
         UIManager.Instance.InitializeAllTexts();
@@ -122,7 +121,6 @@ public class PlayerController : MonoBehaviour
             ResourceInventory[ResourceType.Wood],
             ResourceInventory[ResourceType.Stone],
             ResourceInventory[ResourceType.Iron],
-            ResourceInventory[ResourceType.Gold],
             ResourceInventory[ResourceType.Oil]);
     }
 
@@ -201,10 +199,10 @@ public class PlayerController : MonoBehaviour
             GameObject newBullet = Instantiate(_bulletPrefab, transform);
             newBullet.transform.parent = null;
             newBullet.SetActive(true);
-            newBullet.GetComponent<Bullet>().BulletDamage = _gunPerShotDamage;
+            newBullet.GetComponent<Bullet>().BulletDamage = _gun.GunPerShotDamage;
             newBullet.GetComponent<Bullet>().FromPlayer = true;
 
-            _timeToNextShot = _fireRateInSeconds;
+            _timeToNextShot = _gun.FireRateInSeconds;
         }
     }
 

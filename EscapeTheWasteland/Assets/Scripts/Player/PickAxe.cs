@@ -1,33 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 public class PickAxe
-    {
-        private int _level;
+{
+    private int _level;
+    private Dictionary<int, UpgradeCost> _upgradeCosts = new Dictionary<int, UpgradeCost>();
 
-        public int Level { get => _level; set => _level = value; }
+    public int Level { get => _level; set => _level = value; }
 
-        private Dictionary<int, float> mineSpeedBonus = new Dictionary<int, float>();
+    private Dictionary<int, float> mineSpeedBonus = new Dictionary<int, float>();
 
-        public float TimePerMineHit { get => (1f / (1f + (mineSpeedBonus[Level]/100f))); }
+    public float TimePerMineHit { get => (1f / (1f + (mineSpeedBonus[Level]/100f))); }
 
-        public void InitializePickaxe()
+    public Dictionary<int, UpgradeCost> UpgradeCosts { get => _upgradeCosts; }
+
+    public void InitializePickaxe()
         {
-            InitializePickaxeAttackSpeed();
+            InitializeUpgradeTree();
         }
         
-        public void InitializePickaxeAttackSpeed()
-        {
-            mineSpeedBonus.Add(0, 0);
-            mineSpeedBonus.Add(1, 20f);
-            mineSpeedBonus.Add(2, 50f);
-            mineSpeedBonus.Add(3, 100f);
-            mineSpeedBonus.Add(4, 100f);
-            mineSpeedBonus.Add(5, 100f);
+    public void InitializeUpgradeTree()
+    {
+        mineSpeedBonus.Add(0, 0);
+        
 
+        mineSpeedBonus.Add(1, 20f);
+        _upgradeCosts.Add(1, new UpgradeCost(1,0,0,0));
+
+        mineSpeedBonus.Add(2, 50f);
+        _upgradeCosts.Add(1, new UpgradeCost(0, 1, 0, 0));
+
+        mineSpeedBonus.Add(3, 100f);
+        _upgradeCosts.Add(1, new UpgradeCost(0, 0, 1, 0));
+
+        mineSpeedBonus.Add(4, 100f);
+        _upgradeCosts.Add(1, new UpgradeCost(0, 0, 0, 1));
     }
-    }
+}
 

@@ -21,12 +21,11 @@ public class UIManager : Singleton<UIManager>
         _diamondsText.text = "0";
     }
 
-    public void UpdateResourceText(int wood, int stone, int iron, int gold, int diamonds)
+    public void UpdateResourceText(int wood, int stone, int iron, int diamonds)
     {
         _woodText.text = wood.ToString();
         _stoneText.text = stone.ToString();
         _ironText.text = iron.ToString();
-        _goldText.text = gold.ToString();
         _diamondsText.text = diamonds.ToString();
     }
 }
