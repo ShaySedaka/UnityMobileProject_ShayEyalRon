@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _runSpeed;
-    [SerializeField] private int _pickAxeLevel;
+    [SerializeField] private int _pickAxeLevel = 0;
+    [SerializeField] private int _gunLevel = 0;
+
     [SerializeField] float _miningRadius = 1f;
     [SerializeField] LayerMask _miningLayerMask;
    
@@ -42,6 +44,10 @@ public class PlayerController : MonoBehaviour
         _pickAxe = new PickAxe();
         _pickAxe.Level = _pickAxeLevel;
         _pickAxe.InitializePickaxe();
+
+        _gun = new Gun();
+        _gun.Level = _gunLevel;
+        _gun.InitializeGun();
     }
 
     void Update()

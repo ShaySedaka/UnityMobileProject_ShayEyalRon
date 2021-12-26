@@ -7,9 +7,9 @@ public class PickAxe
 
     public int Level { get => _level; set => _level = value; }
 
-    private Dictionary<int, float> mineSpeedBonus = new Dictionary<int, float>();
+    private Dictionary<int, float> _mineSpeedBonus = new Dictionary<int, float>();
 
-    public float TimePerMineHit { get => (1f / (1f + (mineSpeedBonus[Level]/100f))); }
+    public float TimePerMineHit { get => (1f / (1f + (_mineSpeedBonus[Level]/100f))); }
 
     public Dictionary<int, UpgradeCost> UpgradeCosts { get => _upgradeCosts; }
 
@@ -20,20 +20,20 @@ public class PickAxe
         
     public void InitializeUpgradeTree()
     {
-        mineSpeedBonus.Add(0, 0);
+        _mineSpeedBonus.Add(0, 0);
         
 
-        mineSpeedBonus.Add(1, 20f);
+        _mineSpeedBonus.Add(1, 20f);
         _upgradeCosts.Add(1, new UpgradeCost(1,0,0,0));
 
-        mineSpeedBonus.Add(2, 50f);
-        _upgradeCosts.Add(1, new UpgradeCost(0, 1, 0, 0));
+        _mineSpeedBonus.Add(2, 50f);
+        _upgradeCosts.Add(2, new UpgradeCost(0, 1, 0, 0));
 
-        mineSpeedBonus.Add(3, 100f);
-        _upgradeCosts.Add(1, new UpgradeCost(0, 0, 1, 0));
+        _mineSpeedBonus.Add(3, 100f);
+        _upgradeCosts.Add(3, new UpgradeCost(0, 0, 1, 0));
 
-        mineSpeedBonus.Add(4, 100f);
-        _upgradeCosts.Add(1, new UpgradeCost(0, 0, 0, 1));
+        _mineSpeedBonus.Add(4, 100f);
+        _upgradeCosts.Add(4, new UpgradeCost(0, 0, 0, 1));
     }
 }
 
