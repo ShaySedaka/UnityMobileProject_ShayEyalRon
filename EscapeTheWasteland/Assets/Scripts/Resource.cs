@@ -21,19 +21,6 @@ public class Resource : MonoBehaviour
 
     public ResourceType Type { get => _type; }
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AttemptToMine(PlayerController player)
     {
         _health--;

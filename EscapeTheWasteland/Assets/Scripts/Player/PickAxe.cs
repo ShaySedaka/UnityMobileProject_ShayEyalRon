@@ -25,7 +25,9 @@ public class PickAxe
             mineSpeedBonus.Add(1, 20f);
             mineSpeedBonus.Add(2, 50f);
             mineSpeedBonus.Add(3, 100f);
+            mineSpeedBonus.Add(4, 100f);
+            mineSpeedBonus.Add(5, 100f);
 
-        }
+    }
     }
 

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
     public enum EnemyState
 {
     IDLE,
@@ -10,10 +9,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 { 
-
     [SerializeField] int _hp = 5;
     [SerializeField] float _fireRateInSeconds = 0.6f;
     [SerializeField] float _detectionRadius = 20f;
+    [SerializeField] int _bulletDamage = 1;
 
     [SerializeField] GameObject _alertEffect;
     [SerializeField] GameObject _bulletPrefab;
@@ -26,7 +25,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _currentState = EnemyState.IDLE;
-        _timeToNextShot = _fireRateInSeconds;
+        _timeToNextShot = 0;
     }
 
     void OnDrawGizmos()
@@ -90,6 +89,7 @@ public class Enemy : MonoBehaviour
             GameObject newBullet = Instantiate(_bulletPrefab, transform);
             newBullet.transform.parent = null;
             newBullet.SetActive(true);
+            newBullet.GetComponent<Bullet>().BulletDamage = _bulletDamage;
 
             _timeToNextShot = _fireRateInSeconds;
         }
@@ -121,4 +121,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("Enemy hit with damage: " + damage);
+
+        _hp -= damage;
+
+        if(_hp <= 0)
+        {
+            OnEnemyDeath();
+        }
+    }
+
+    private void OnEnemyDeath()
+    {
+        gameObject.SetActive(false);
+    }
 }
