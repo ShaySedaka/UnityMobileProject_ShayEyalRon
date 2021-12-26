@@ -12,9 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask _miningLayerMask;
    
     [SerializeField] float _detectionRadius = 4f;
-    [SerializeField] GameObject _bulletPrefab;
-    
 
+    [SerializeField] GameObject _bulletPrefab;
     [SerializeField] private ParticleSystem _miningEffect;
     [SerializeField] private GameObject _pickaxeSprite;
     [SerializeField] private GameObject _gunSprite;
