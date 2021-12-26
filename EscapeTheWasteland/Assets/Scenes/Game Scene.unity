@@ -508,6 +508,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1110796949}
     m_Modifications:
+    - target: {fileID: 2051691409888092483, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051691409888092483, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1347740523}
+    - target: {fileID: 2051691409888092483, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttemptToUpgradeGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051691409888092483, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerInventory, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2051691410640043117, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -555,6 +571,22 @@ PrefabInstance:
     - target: {fileID: 8442840397881031279, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8442840398098261825, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8442840398098261825, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1347740523}
+    - target: {fileID: 8442840398098261825, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttemptToUpgradePickaxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8442840398098261825, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerInventory, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8442840398514671280, guid: 882fec32cb779654da5aa84357fc4457, type: 3}
       propertyPath: m_AnchorMax.y
@@ -7939,7 +7971,6 @@ GameObject:
   - component: {fileID: 1347740518}
   - component: {fileID: 1347740521}
   - component: {fileID: 1347740523}
-  - component: {fileID: 1347740522}
   - component: {fileID: 1347740520}
   - component: {fileID: 1347740519}
   m_Layer: 0
@@ -7981,8 +8012,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _runSpeed: 3
-  _pickAxeLevel: 3
-  _gunLevel: 0
   _miningRadius: 1.2
   _miningLayerMask:
     serializedVersion: 2
@@ -7992,7 +8021,7 @@ MonoBehaviour:
   _miningEffect: {fileID: 1125544088}
   _pickaxeSprite: {fileID: 1506097369}
   _gunSprite: {fileID: 777833487}
-  _inventory: {fileID: 0}
+  _inventory: {fileID: 1347740523}
 --- !u!58 &1347740519
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8043,18 +8072,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 20
---- !u!114 &1347740522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347740516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0b04ac5a4153814ea667bf29ca44964, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1347740523
 MonoBehaviour:
   m_ObjectHideFlags: 0

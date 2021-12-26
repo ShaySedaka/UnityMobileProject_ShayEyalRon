@@ -6,12 +6,16 @@ public class Workbench : MonoBehaviour
     GameObject _upgradeCnavas;
     [SerializeField]
     UpgradeUIHandler _upgradeUIHandler;
+
+    PlayerInventory inventory;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {
+
             _upgradeCnavas.gameObject.SetActive(true);
-            PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+            inventory = other.GetComponent<PlayerInventory>();
+            Debug.Log(inventory.Gun.Level);
             SetCostsForUpgrades(inventory);
         }
     }

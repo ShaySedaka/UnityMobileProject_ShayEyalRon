@@ -25,6 +25,62 @@ public struct UpgradeCost
         _coalCost = coalCost;
     }
 
-    
+    public static UpgradeCost operator +(UpgradeCost first, UpgradeCost second)
+    {
+        return new UpgradeCost(first.WoodCost + second.WoodCost,
+                               first.StoneCost + second.StoneCost,
+                               first.IronCost + second.IronCost,
+                               first.CoalCost + second.CoalCost);
+    }
+
+    public static UpgradeCost operator -(UpgradeCost first, UpgradeCost second)
+    {
+        return new UpgradeCost(first.WoodCost - second.WoodCost,
+                               first.StoneCost - second.StoneCost,
+                               first.IronCost - second.IronCost,
+                               first.CoalCost - second.CoalCost);
+    }
+
+    public static bool operator <(UpgradeCost first, UpgradeCost second)
+    {
+        return ((first.WoodCost) < (second.WoodCost) &&
+               first.StoneCost < second.StoneCost &&
+               first.IronCost < second.IronCost &&
+               first.CoalCost < second.CoalCost);
+    }
+
+    public static bool operator >(UpgradeCost first, UpgradeCost second)
+    {
+        return ((first.WoodCost) > (second.WoodCost) &&
+               first.StoneCost > second.StoneCost &&
+               first.IronCost > second.IronCost &&
+               first.CoalCost > second.CoalCost);
+    }
+
+    public static bool operator ==(UpgradeCost first, UpgradeCost second)
+    {
+        return ((first.WoodCost) == (second.WoodCost) &&
+               first.StoneCost == second.StoneCost &&
+               first.IronCost == second.IronCost &&
+               first.CoalCost == second.CoalCost);
+    }
+
+    public static bool operator >=(UpgradeCost first, UpgradeCost second)
+    {
+        return ((first == second) || (first > second));
+    }
+
+    public static bool operator <=(UpgradeCost first, UpgradeCost second)
+    {
+        return ((first == second) || (first < second));
+    }
+
+    public static bool operator !=(UpgradeCost first, UpgradeCost second)
+    {
+        return ((first.WoodCost) != (second.WoodCost) ||
+               first.StoneCost != second.StoneCost ||
+               first.IronCost != second.IronCost ||
+               first.CoalCost != second.CoalCost);
+    }
 }
 

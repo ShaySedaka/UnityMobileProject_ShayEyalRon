@@ -28,11 +28,41 @@ public class PlayerInventory : MonoBehaviour
 
     private void InitializeResourceInventory()
     {
-       ResourceInventory.Add(ResourceType.Wood, 0);
-       ResourceInventory.Add(ResourceType.Stone, 0);
-       ResourceInventory.Add(ResourceType.Iron, 0);
-       ResourceInventory.Add(ResourceType.Coal, 0);
+       ResourceInventory.Add(ResourceType.Wood, 10);
+       ResourceInventory.Add(ResourceType.Stone, 10);
+       ResourceInventory.Add(ResourceType.Iron, 10);
+       ResourceInventory.Add(ResourceType.Coal, 10);
 
         UIManager.Instance.InitializeAllTexts();
+    }
+
+    private void AttemptToUpgradeTool(Tool tool, UpgradeCost nextUpgrade)
+    {
+        UpgradeCost currentResources = new UpgradeCost(ResourceInventory[ResourceType.Wood],
+                                                       ResourceInventory[ResourceType.Stone],
+                                                       ResourceInventory[ResourceType.Iron],
+                                                       ResourceInventory[ResourceType.Coal]);
+
+        if (currentResources >= nextUpgrade)
+        {
+            ResourceInventory[ResourceType.Wood] -= nextUpgrade.WoodCost;
+            ResourceInventory[ResourceType.Stone] -= nextUpgrade.StoneCost;
+            ResourceInventory[ResourceType.Iron] -= nextUpgrade.IronCost;
+            ResourceInventory[ResourceType.Coal] -= nextUpgrade.CoalCost;
+            tool.Upgrade();
+        }
+    }
+
+    public void AttemptToUpgradeGun()
+    {
+        UpgradeCost nextUpgrade = BalanceSettings.GunUpgradeCosts[Gun.Level + 1];
+        AttemptToUpgradeTool(Gun, nextUpgrade);
+        Debug.Log(Gun.Level);
+    }
+
+    public void AttemptToUpgradePickaxe()
+    {
+        UpgradeCost nextUpgrade = BalanceSettings.PickaxeUpgradeCosts[Pickaxe.Level + 1];
+        AttemptToUpgradeTool(Pickaxe, nextUpgrade);
     }
 }
