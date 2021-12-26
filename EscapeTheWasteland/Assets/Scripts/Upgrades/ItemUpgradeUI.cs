@@ -17,12 +17,11 @@ public class ItemUpgradeUI : MonoBehaviour
     [SerializeField]
     ResourceCostUI _DiamondsUIHolder;
     int _diamondCost;
-    public void SetUpgradeCost(int woodAmount, int stoneAmount, int ironAmount, int goldAmount, int DiamondAmount)
+    public void SetUpgradeCost(int woodAmount, int stoneAmount, int ironAmount, int DiamondAmount)
     {
         _woodCost = woodAmount;
         _stoneCost = stoneAmount;
         _ironCost = ironAmount;
-        _goldCost = goldAmount;
         _diamondCost = DiamondAmount;
 
         if(woodAmount != 0 )
@@ -36,10 +35,6 @@ public class ItemUpgradeUI : MonoBehaviour
         if (ironAmount != 0)
         {
             _ironUIHolder.ActivateCost(ironAmount);
-        }
-        if (goldAmount != 0)
-        {
-            _goldUIHolder.ActivateCost(goldAmount);
         }
         if (DiamondAmount != 0)
         {

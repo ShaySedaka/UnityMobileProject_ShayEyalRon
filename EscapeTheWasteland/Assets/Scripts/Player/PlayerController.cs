@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _runSpeed;
-    [SerializeField] private int _pickAxeLevel = 0;
-    [SerializeField] private int _gunLevel = 0;
 
     [SerializeField] float _miningRadius = 1f;
     [SerializeField] LayerMask _miningLayerMask;
@@ -18,36 +16,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _pickaxeSprite;
     [SerializeField] private GameObject _gunSprite;
 
+    [SerializeField] private PlayerInventory _inventory;
+
     private Collider2D[] _collidersWithinRange;
-    private Dictionary<ResourceType, int> _resourceInventory = new Dictionary<ResourceType, int>();
+   
     private float _timeSinceLastMine = 1;
 
-    private PickAxe _pickAxe;
-    private Gun _gun;
+    
 
     private GameObject _detectedEnemy;
     private float _timeToNextShot = 0f;
 
     public float RunSpeed { get => _runSpeed;}
-    public Dictionary<ResourceType, int> ResourceInventory { get => _resourceInventory;}
-
-    void Start()
-    {
-        InitializeResourceInventory();
-
-        foreach (var resource in ResourceInventory)
-        {
-            Debug.Log(resource.Key.ToString() + ": " + resource.Value);
-        }
-
-        _pickAxe = new PickAxe();
-        _pickAxe.Level = _pickAxeLevel;
-        _pickAxe.InitializePickaxe();
-
-        _gun = new Gun();
-        _gun.Level = _gunLevel;
-        _gun.InitializeGun();
-    }
+    public PlayerInventory Inventory { get => _inventory; }
 
     void Update()
     {
@@ -74,21 +55,13 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _miningRadius);
     }
 
-    private void InitializeResourceInventory()
-    {   
-        ResourceInventory.Add(ResourceType.Wood, 0);
-        ResourceInventory.Add(ResourceType.Stone, 0);
-        ResourceInventory.Add(ResourceType.Iron, 0);
-        ResourceInventory.Add(ResourceType.Oil, 0);
-
-        UIManager.Instance.InitializeAllTexts();
-    }
+   
 
     private void AttemptToMineResourcesAroundPlayer()
     {
         _timeSinceLastMine += Time.deltaTime;
 
-        if(_timeSinceLastMine >= _pickAxe.TimePerMineHit)
+        if(_timeSinceLastMine >= Inventory.Pickaxe.TimePerMineHit)
         {
             _collidersWithinRange = Physics2D.OverlapCircleAll(transform.position, _miningRadius, _miningLayerMask);
 
@@ -97,7 +70,7 @@ public class PlayerController : MonoBehaviour
                 foreach (var collider in _collidersWithinRange)
                 {
                     Resource resourceRef = collider.GetComponent<Resource>();
-                    if (resourceRef != null && ((int)resourceRef.Type) <= _pickAxe.Level)
+                    if (resourceRef != null && ((int)resourceRef.Type) <= Inventory.Pickaxe.Level)
                     {
                         resourceRef.AttemptToMine(this);
                         PullOutPickaxe();
@@ -116,17 +89,17 @@ public class PlayerController : MonoBehaviour
 
     public void AddResourceToInventory(ResourceType type)
     {
-        if (ResourceInventory.ContainsKey(type))
-        {      
-            ResourceInventory[type] += 3; // MAGIC NUMBER          
+        if (Inventory.ResourceInventory.ContainsKey(type))
+        {
+            Inventory.ResourceInventory[type] += BalanceSettings.ResourcePerVein;       
         }
 
         //update UI manager
         UIManager.Instance.UpdateResourceText(
-            ResourceInventory[ResourceType.Wood],
-            ResourceInventory[ResourceType.Stone],
-            ResourceInventory[ResourceType.Iron],
-            ResourceInventory[ResourceType.Oil]);
+            Inventory.ResourceInventory[ResourceType.Wood],
+            Inventory.ResourceInventory[ResourceType.Stone],
+            Inventory.ResourceInventory[ResourceType.Iron],
+            Inventory.ResourceInventory[ResourceType.Coal]);
     }
 
     public void MovePlayer(Vector2 direction)
@@ -204,10 +177,10 @@ public class PlayerController : MonoBehaviour
             GameObject newBullet = Instantiate(_bulletPrefab, transform);
             newBullet.transform.parent = null;
             newBullet.SetActive(true);
-            newBullet.GetComponent<Bullet>().BulletDamage = _gun.GunPerShotDamage;
+            newBullet.GetComponent<Bullet>().BulletDamage = Inventory.Gun.GunPerShotDamage;
             newBullet.GetComponent<Bullet>().FromPlayer = true;
 
-            _timeToNextShot = _gun.FireRateInSeconds;
+            _timeToNextShot = Inventory.Gun.FireRateInSeconds;
         }
     }
 

@@ -21,7 +21,7 @@ public class WinCondition : MonoBehaviour
 
     private bool CheckWinCondition(PlayerController player)
     {
-        if(player.ResourceInventory[ResourceType.Oil] >= _rarestResourceAmount)
+        if(player.Inventory.ResourceInventory[ResourceType.Coal] >= _rarestResourceAmount)
         {
             return true;
         }

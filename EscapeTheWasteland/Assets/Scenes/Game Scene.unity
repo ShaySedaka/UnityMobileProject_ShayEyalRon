@@ -7938,6 +7938,7 @@ GameObject:
   - component: {fileID: 1347740517}
   - component: {fileID: 1347740518}
   - component: {fileID: 1347740521}
+  - component: {fileID: 1347740523}
   - component: {fileID: 1347740522}
   - component: {fileID: 1347740520}
   - component: {fileID: 1347740519}
@@ -7991,6 +7992,7 @@ MonoBehaviour:
   _miningEffect: {fileID: 1125544088}
   _pickaxeSprite: {fileID: 1506097369}
   _gunSprite: {fileID: 777833487}
+  _inventory: {fileID: 0}
 --- !u!58 &1347740519
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8051,6 +8053,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0b04ac5a4153814ea667bf29ca44964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1347740523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347740516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a193bfaf60584724688a2401942316e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1392446118

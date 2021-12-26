@@ -11,7 +11,8 @@ public class Workbench : MonoBehaviour
         if(other.tag == "Player")
         {
             _upgradeCnavas.gameObject.SetActive(true);
-            SetCostsForUpgrades();
+            PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+            SetCostsForUpgrades(inventory);
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -21,9 +22,9 @@ public class Workbench : MonoBehaviour
             _upgradeCnavas.gameObject.SetActive(false);
         }
     }
-    public void SetCostsForUpgrades()
+    public void SetCostsForUpgrades(PlayerInventory player)
     {
         //get data from player about the level of his upgrads
-        _upgradeUIHandler.UpgradeItemLevels(1, 1);
+        _upgradeUIHandler.UpgradeItemLevels(player.Pickaxe.Level, player.Gun.Level);
     }
 }

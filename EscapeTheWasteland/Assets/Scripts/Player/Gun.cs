@@ -17,27 +17,16 @@ public class Gun
 
     private Dictionary<int, float> _damageUpgrades = new Dictionary<int, float>();
 
-    public Gun()
+    public Gun(float fireRate, int gunDamage)
     {
-        _fireRateInSeconds = 0.6f;
-        _gunPerShotDamage = 1;
+        _fireRateInSeconds = fireRate;
+        _gunPerShotDamage = gunDamage;
         _level = 0;
     }
 
-    public void InitializeGun()
+    public void Upgrade()
     {
-        InitializeUpgradeTree();
-    }
-
-    public void InitializeUpgradeTree()
-    {
-        _damageUpgrades.Add(1, 2);
-        UpgradeCosts.Add(0, new UpgradeCost(1, 0, 0, 0));
-
-        _damageUpgrades.Add(2, 3);
-        UpgradeCosts.Add(1, new UpgradeCost(0, 1, 0, 0));
-
-        _damageUpgrades.Add(3, 4);
-        UpgradeCosts.Add(2, new UpgradeCost(0, 0, 1, 0));
+        Level++;
+        GunPerShotDamage = BalanceSettings.GunDamageByLevel[Level];
     }
 }
