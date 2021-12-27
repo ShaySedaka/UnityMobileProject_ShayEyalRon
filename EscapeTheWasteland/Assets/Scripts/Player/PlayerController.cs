@@ -95,11 +95,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //update UI manager
-        UIManager.Instance.UpdateResourceText(
-            Inventory.ResourceInventory[ResourceType.Wood],
-            Inventory.ResourceInventory[ResourceType.Stone],
-            Inventory.ResourceInventory[ResourceType.Iron],
-            Inventory.ResourceInventory[ResourceType.Coal]);
+        UIManager.Instance.UpdateResourceText();
     }
 
     public void MovePlayer(Vector2 direction)

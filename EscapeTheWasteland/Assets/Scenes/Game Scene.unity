@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 299077436}
   - component: {fileID: 299077435}
   m_Layer: 5
-  m_Name: Oil Icon
+  m_Name: Coal Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1741,7 +1741,7 @@ GameObject:
   - component: {fileID: 614209274}
   - component: {fileID: 614209273}
   m_Layer: 5
-  m_Name: Oil Panel
+  m_Name: Coal Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8861,7 +8861,7 @@ GameObject:
   - component: {fileID: 1890021048}
   - component: {fileID: 1890021047}
   m_Layer: 5
-  m_Name: Oil Text
+  m_Name: Coal Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9016,7 +9016,8 @@ MonoBehaviour:
   _stoneText: {fileID: 707004505}
   _ironText: {fileID: 478000586}
   _goldText: {fileID: 358776051}
-  _diamondsText: {fileID: 1890021047}
+  _coalText: {fileID: 1890021047}
+  playerInventory: {fileID: 1347740523}
 --- !u!4 &1989083613
 Transform:
   m_ObjectHideFlags: 0

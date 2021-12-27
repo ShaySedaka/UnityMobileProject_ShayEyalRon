@@ -33,7 +33,7 @@ public class PlayerInventory : MonoBehaviour
        ResourceInventory.Add(ResourceType.Iron, 10);
        ResourceInventory.Add(ResourceType.Coal, 10);
 
-        UIManager.Instance.InitializeAllTexts();
+       UIManager.Instance.UpdateResourceText();
     }
 
     private void AttemptToUpgradeTool(Tool tool, UpgradeCost nextUpgrade)
@@ -50,6 +50,7 @@ public class PlayerInventory : MonoBehaviour
             ResourceInventory[ResourceType.Iron] -= nextUpgrade.IronCost;
             ResourceInventory[ResourceType.Coal] -= nextUpgrade.CoalCost;
             tool.Upgrade();
+            UIManager.Instance.UpdateResourceText();
         }
     }
 

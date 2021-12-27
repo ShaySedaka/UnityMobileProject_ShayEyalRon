@@ -7,7 +7,7 @@ public class PickAxe : Tool
     public PickAxe()
     {
         _level = 0;
-        TimePerMineHit = BalanceSettings.PickaxeMineSpeedByLevel[Level];
+        TimePerMineHit = (1f / (1f + (BalanceSettings.PickaxeMineSpeedByLevel[Level] / 100f)));
     }
 
     public override void Upgrade()
