@@ -12,6 +12,8 @@ public class PlayerInventory : MonoBehaviour
     public Gun Gun { get => _gun; set => _gun = value; }
     public PickAxe Pickaxe { get => _pickAxe; set => _pickAxe = value; }
 
+    [SerializeField] int[] _initialResources = { 0, 0, 0, 0 };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,18 +22,12 @@ public class PlayerInventory : MonoBehaviour
         InitializeResourceInventory();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void InitializeResourceInventory()
     {
-       ResourceInventory.Add(ResourceType.Wood, 10);
-       ResourceInventory.Add(ResourceType.Stone, 10);
-       ResourceInventory.Add(ResourceType.Iron, 10);
-       ResourceInventory.Add(ResourceType.Coal, 10);
+       ResourceInventory.Add(ResourceType.Wood, _initialResources[0]);
+       ResourceInventory.Add(ResourceType.Stone, _initialResources[1]);
+       ResourceInventory.Add(ResourceType.Iron, _initialResources[2]);
+       ResourceInventory.Add(ResourceType.Coal, _initialResources[3]);
 
        UIManager.Instance.UpdateResourceText();
     }
