@@ -9,8 +9,8 @@ public class UpgradeUIHandler : MonoBehaviour
 
     public void UpgradeItemLevels(int pickaxeLVL, int gunLVL)
     {
-        UpgradeCost gunUpgradeCost = BalanceSettings.GunUpgradeCosts[gunLVL + 1];
-        UpgradeCost pickaxeUpgradeCost = BalanceSettings.PickaxeUpgradeCosts[pickaxeLVL + 1];
+        UpgradeCost gunUpgradeCost = BalanceSettings.GunUpgradeCosts[gunLVL];
+        UpgradeCost pickaxeUpgradeCost = BalanceSettings.PickaxeUpgradeCosts[pickaxeLVL];
 
         //get costs from the upgrade manager of some sort from level
         _pickaxeUI.SetUpgradeCost(pickaxeUpgradeCost.WoodCost, pickaxeUpgradeCost.StoneCost, pickaxeUpgradeCost.IronCost, pickaxeUpgradeCost.CoalCost);

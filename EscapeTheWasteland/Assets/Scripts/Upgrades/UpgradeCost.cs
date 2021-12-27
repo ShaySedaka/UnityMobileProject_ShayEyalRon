@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
+﻿
 public struct UpgradeCost
 {
     int _woodCost;
@@ -67,12 +61,18 @@ public struct UpgradeCost
 
     public static bool operator >=(UpgradeCost first, UpgradeCost second)
     {
-        return ((first == second) || (first > second));
+        return ((first.WoodCost) >= (second.WoodCost) &&
+               first.StoneCost >= second.StoneCost &&
+               first.IronCost >= second.IronCost &&
+               first.CoalCost >= second.CoalCost);
     }
 
     public static bool operator <=(UpgradeCost first, UpgradeCost second)
     {
-        return ((first == second) || (first < second));
+        return ((first.WoodCost) <= (second.WoodCost) &&
+               first.StoneCost <= second.StoneCost &&
+               first.IronCost <= second.IronCost &&
+               first.CoalCost <= second.CoalCost);
     }
 
     public static bool operator !=(UpgradeCost first, UpgradeCost second)

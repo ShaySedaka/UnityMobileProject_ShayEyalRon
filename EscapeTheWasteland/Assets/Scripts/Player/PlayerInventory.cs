@@ -53,14 +53,14 @@ public class PlayerInventory : MonoBehaviour
 
     public void AttemptToUpgradeGun()
     {
-        UpgradeCost nextUpgrade = BalanceSettings.GunUpgradeCosts[Gun.Level + 1];
+        UpgradeCost nextUpgrade = BalanceSettings.GunUpgradeCosts[Gun.Level];
         AttemptToUpgradeTool(Gun, nextUpgrade);
         
     }
 
     public void AttemptToUpgradePickaxe()
     {
-        UpgradeCost nextUpgrade = BalanceSettings.PickaxeUpgradeCosts[Pickaxe.Level + 1];
+        UpgradeCost nextUpgrade = BalanceSettings.PickaxeUpgradeCosts[Pickaxe.Level];
         AttemptToUpgradeTool(Pickaxe, nextUpgrade);
     }
 }

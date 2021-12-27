@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 12
   _type: 3
+  _requiredPickaxeLevelToMine: 3
 --- !u!58 &179461988269254056
 CircleCollider2D:
   m_ObjectHideFlags: 0

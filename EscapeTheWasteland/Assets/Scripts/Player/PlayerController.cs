@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
                 foreach (var collider in _collidersWithinRange)
                 {
                     Resource resourceRef = collider.GetComponent<Resource>();
-                    if (resourceRef != null && ((int)resourceRef.Type) <= Inventory.Pickaxe.Level)
+                    if (resourceRef != null && _inventory.Pickaxe.Level >= resourceRef.RequiredPickaxeLevelToMine)
                     {
                         resourceRef.AttemptToMine(this);
                         PullOutPickaxe();

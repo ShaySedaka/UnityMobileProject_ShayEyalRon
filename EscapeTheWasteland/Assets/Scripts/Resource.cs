@@ -18,7 +18,11 @@ public class Resource : MonoBehaviour
     [SerializeField]
     private ResourceType _type;
 
+    [SerializeField]
+    private int _requiredPickaxeLevelToMine = 1;
+
     public ResourceType Type { get => _type; }
+    public int RequiredPickaxeLevelToMine { get => _requiredPickaxeLevelToMine;}
 
     public void AttemptToMine(PlayerController player)
     {
