@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 10
   _fireRateInSeconds: 0.6
-  _detectionRadius: 4
+  _detectionRadius: 7
   _bulletDamage: 2
   _alertEffect: {fileID: 4774444384229804544}
   _bulletPrefab: {fileID: 4774444385739890449}
