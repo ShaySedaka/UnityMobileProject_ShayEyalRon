@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 179461988269254057}
   - component: {fileID: 179461988269254055}
   - component: {fileID: 179461988269254056}
+  - component: {fileID: 3834405067939291643}
   - component: {fileID: 179461988269254058}
-  - component: {fileID: 4886743510822803187}
   m_Layer: 8
-  m_Name: Oil
+  m_Name: Stone
   m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd66aca52e45d764cbd39ae568298b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 12
-  _type: 3
+  _health: 6
+  _type: 1
 --- !u!58 &179461988269254056
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -64,6 +64,22 @@ CircleCollider2D:
   m_Offset: {x: -0.03495407, y: 0}
   serializedVersion: 2
   m_Radius: 2.404986
+--- !u!58 &3834405067939291643
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179461988269254059}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.56
 --- !u!212 &179461988269254058
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -104,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 15199f83427756c45a2f03b9eaf1b11b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7551f2050e3e1fb43a593bef496fae7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,19 +131,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4886743510822803187
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179461988269254059}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.56
