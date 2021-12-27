@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 179461988269254057}
   - component: {fileID: 179461988269254055}
-  - component: {fileID: 179461988269254056}
   - component: {fileID: 179461988269254058}
   - component: {fileID: 4886743510822803187}
   m_Layer: 8
@@ -49,22 +48,6 @@ MonoBehaviour:
   _health: 12
   _type: 3
   _requiredPickaxeLevelToMine: 3
---- !u!58 &179461988269254056
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179461988269254059}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.03495407, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.404986
 --- !u!212 &179461988269254058
 SpriteRenderer:
   m_ObjectHideFlags: 0

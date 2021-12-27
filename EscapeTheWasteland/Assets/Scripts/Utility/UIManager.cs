@@ -5,12 +5,16 @@ using TMPro;
 
 public class UIManager : Singleton<UIManager>
 {
+    [SerializeField] private PlayerInventory _playerInventory;
+    [SerializeField] private GameObject _upgradeCanvas;
+
     [SerializeField] public TextMeshProUGUI _woodText;
     [SerializeField] public TextMeshProUGUI _stoneText;
     [SerializeField] public TextMeshProUGUI _ironText;
     [SerializeField] public TextMeshProUGUI _goldText;
     [SerializeField] public TextMeshProUGUI _coalText;
-    [SerializeField] private PlayerInventory playerInventory;
+
+
 
 
     public void InitializeAllTexts()
@@ -24,9 +28,14 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateResourceText()
     {
-        _woodText.text = playerInventory.ResourceInventory[ResourceType.Wood].ToString();
-        _stoneText.text = playerInventory.ResourceInventory[ResourceType.Stone].ToString();
-        _ironText.text = playerInventory.ResourceInventory[ResourceType.Iron].ToString();
-        _coalText.text = playerInventory.ResourceInventory[ResourceType.Coal].ToString();
+        _woodText.text = _playerInventory.ResourceInventory[ResourceType.Wood].ToString();
+        _stoneText.text = _playerInventory.ResourceInventory[ResourceType.Stone].ToString();
+        _ironText.text = _playerInventory.ResourceInventory[ResourceType.Iron].ToString();
+        _coalText.text = _playerInventory.ResourceInventory[ResourceType.Coal].ToString();
+    }
+
+    public void TurnOffUpgradeCanvas()
+    {
+        _upgradeCanvas.SetActive(false);
     }
 }

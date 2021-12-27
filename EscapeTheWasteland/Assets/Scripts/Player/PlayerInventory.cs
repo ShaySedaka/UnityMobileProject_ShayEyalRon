@@ -48,6 +48,8 @@ public class PlayerInventory : MonoBehaviour
             tool.Upgrade();
             UIManager.Instance.UpdateResourceText();
             Debug.Log($"{tool.GetType()} level: " + tool.Level);
+
+            UIManager.Instance.TurnOffUpgradeCanvas();
         }
     }
 

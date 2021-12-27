@@ -12,6 +12,7 @@ public class Workbench : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            //TODO: Eyal, handle max level
 
             _upgradeCnavas.gameObject.SetActive(true);
             inventory = other.GetComponent<PlayerInventory>();

@@ -12,7 +12,7 @@ public static class BalanceSettings
 
 
     public static UpgradeCost[] PickaxeUpgradeCosts = { new UpgradeCost(10, 0, 0, 0),
-                                                        new UpgradeCost(12, 0, 7, 0),
+                                                        new UpgradeCost(12, 7, 0, 0),
                                                         new UpgradeCost(10, 10, 10, 0) };
 
     public static int[] GunDamageByLevel = { 1, 2, 3, 4 };
