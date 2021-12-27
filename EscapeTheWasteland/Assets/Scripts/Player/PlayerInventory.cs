@@ -51,6 +51,7 @@ public class PlayerInventory : MonoBehaviour
             ResourceInventory[ResourceType.Coal] -= nextUpgrade.CoalCost;
             tool.Upgrade();
             UIManager.Instance.UpdateResourceText();
+            Debug.Log($"{tool.GetType()} level: " + tool.Level);
         }
     }
 
@@ -58,7 +59,7 @@ public class PlayerInventory : MonoBehaviour
     {
         UpgradeCost nextUpgrade = BalanceSettings.GunUpgradeCosts[Gun.Level + 1];
         AttemptToUpgradeTool(Gun, nextUpgrade);
-        Debug.Log(Gun.Level);
+        
     }
 
     public void AttemptToUpgradePickaxe()

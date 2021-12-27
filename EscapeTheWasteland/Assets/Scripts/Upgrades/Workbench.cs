@@ -15,7 +15,6 @@ public class Workbench : MonoBehaviour
 
             _upgradeCnavas.gameObject.SetActive(true);
             inventory = other.GetComponent<PlayerInventory>();
-            Debug.Log(inventory.Gun.Level);
             SetCostsForUpgrades(inventory);
         }
     }
