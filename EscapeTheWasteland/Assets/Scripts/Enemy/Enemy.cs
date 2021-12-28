@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float _detectionRadius = 20f;
     [SerializeField] int _bulletDamage = 1;
 
+    [SerializeField] int _healthAmountDrop;
+
     [SerializeField] GameObject _alertEffect;
     [SerializeField] GameObject _bulletPrefab;
 
@@ -135,6 +137,13 @@ public class Enemy : MonoBehaviour
 
     private void OnEnemyDeath()
     {
+        int getHealthDropChance = Random.Range(0, 100);
+        if(getHealthDropChance >= 0)
+        {
+            //drop health
+            HealthContainer.Instance.DropHealth(transform.position,_healthAmountDrop);
+        }
+        
         gameObject.SetActive(false);
     }
 }

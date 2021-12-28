@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-
-    [SerializeField] int _hp = 10;
-
+    [SerializeField] int _maxHP = 10;
+    int _hp;
+    PlayerHealth()
+    {
+        _hp = _maxHP;
+    }
 
     public void TakeDamage(int damage)
     {
@@ -20,7 +23,13 @@ public class PlayerHealth : MonoBehaviour
             OnPlayerDeath();
         }
     }
-
+    public void PickUpHealth(int health)
+    {
+        _hp += health;
+        if(_hp >= _maxHP)
+            _hp = _maxHP;
+        Debug.Log($"player health is {_hp}");
+    }
     private void OnPlayerDeath()
     {
         // restart the scene
