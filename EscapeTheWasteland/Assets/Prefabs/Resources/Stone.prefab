@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd66aca52e45d764cbd39ae568298b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 6
+  _health: 5
   _type: 1
   _requiredPickaxeLevelToMine: 1
 --- !u!58 &3834405067939291643

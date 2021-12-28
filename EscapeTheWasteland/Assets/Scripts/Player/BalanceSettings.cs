@@ -17,7 +17,7 @@ public static class BalanceSettings
 
     public static int[] GunDamageByLevel = { 1, 2, 3, 4 };
 
-    public static float[] PickaxeMineSpeedByLevel = { 0, 20f, 50f, 100f };
+    public static float[] PickaxeMineSpeedByLevel = { 0, 50f, 100f, 150f };
 
     public static float GunFireRate = 0.6f;
 

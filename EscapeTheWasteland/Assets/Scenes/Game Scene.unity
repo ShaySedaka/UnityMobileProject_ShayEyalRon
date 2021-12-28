@@ -16853,7 +16853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633b66a67496bb74bb7a3c77bafd0c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runSpeed: 3
+  _runSpeed: 4
   _miningRadius: 1.2
   _miningLayerMask:
     serializedVersion: 2
