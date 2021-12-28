@@ -30,10 +30,10 @@ public class PlayerHealth : MonoBehaviour
             _hp = _maxHP;
         Debug.Log($"player health is {_hp}");
     }
+
     private void OnPlayerDeath()
     {
-        // restart the scene
-        Scene scene = SceneManager.GetActiveScene(); 
-        SceneManager.LoadScene(scene.name);
+        Time.timeScale = 0;
+        UIManager.Instance.TurnOnWinLoseCanvas();
     }
 }

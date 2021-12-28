@@ -7,12 +7,15 @@ public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private PlayerInventory _playerInventory;
     [SerializeField] private GameObject _upgradeCanvas;
+    [SerializeField] private GameObject _winLoseCanvas;
+    
 
     [SerializeField] public TextMeshProUGUI _woodText;
     [SerializeField] public TextMeshProUGUI _stoneText;
     [SerializeField] public TextMeshProUGUI _ironText;
     [SerializeField] public TextMeshProUGUI _goldText;
     [SerializeField] public TextMeshProUGUI _coalText;
+    
 
 
 
@@ -37,5 +40,10 @@ public class UIManager : Singleton<UIManager>
     public void TurnOffUpgradeCanvas()
     {
         _upgradeCanvas.SetActive(false);
+    }
+
+    public void TurnOnWinLoseCanvas()
+    {
+        _winLoseCanvas.SetActive(true);
     }
 }
