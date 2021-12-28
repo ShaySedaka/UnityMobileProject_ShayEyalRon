@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 179461988269254058}
   - component: {fileID: 4886743510822803187}
   m_Layer: 8
-  m_Name: Oil
+  m_Name: Coal
   m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
