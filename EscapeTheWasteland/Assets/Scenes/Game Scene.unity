@@ -5317,8 +5317,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 546481392}
-  - component: {fileID: 546481393}
   - component: {fileID: 546481391}
+  - component: {fileID: 546481393}
   m_Layer: 0
   m_Name: Escape Vehicle
   m_TagString: Untagged
@@ -5326,8 +5326,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &546481391
-CircleCollider2D:
+--- !u!61 &546481391
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5336,12 +5336,22 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0559783, y: 0}
+  m_Offset: {x: 0.21212292, y: -0.08838558}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 1.4676204
+  m_Size: {x: 8.848581, y: 16.237562}
+  m_EdgeRadius: 0
 --- !u!4 &546481392
 Transform:
   m_ObjectHideFlags: 0
@@ -5366,10 +5376,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 546481390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e391ecd98cebde94f8061432347c4fd4, type: 3}
+  m_Script: {fileID: 11500000, guid: fa818b26055d6344280cb93d9079caa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rarestResourceAmount: 3
+  _compass: {fileID: 490638766}
 --- !u!4 &557805459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 179461988269254057, guid: 3ec104933a1fe9e4d8efbdcb1da1bb72, type: 3}
@@ -10078,7 +10088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014531867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.09, z: -10}
+  m_LocalPosition: {x: -0.03, y: -0.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1699370132}
@@ -17021,6 +17031,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1288863351}
   - component: {fileID: 1288863352}
+  - component: {fileID: 1288863354}
+  - component: {fileID: 1288863353}
   m_Layer: 0
   m_Name: sport-car
   m_TagString: Untagged
@@ -17093,6 +17105,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1288863353
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288863350}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0559783, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.4676204
+--- !u!114 &1288863354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288863350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e391ecd98cebde94f8061432347c4fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rarestResourceAmount: 3
 --- !u!1001 &1297737170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17429,7 +17470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347740516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.09, z: 0}
+  m_LocalPosition: {x: -0.03, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1125544086}
@@ -21233,6 +21274,10 @@ PrefabInstance:
     - target: {fileID: 4774444384103430061, guid: f834844bfdb446b4393388364ba0d845, type: 3}
       propertyPath: m_Name
       value: Thug Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774444384103430061, guid: f834844bfdb446b4393388364ba0d845, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4774444384103430063, guid: f834844bfdb446b4393388364ba0d845, type: 3}
       propertyPath: m_RootOrder

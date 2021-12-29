@@ -29,6 +29,8 @@ public class PlayerInventory : MonoBehaviour
        ResourceInventory.Add(ResourceType.Iron, _initialResources[2]);
        ResourceInventory.Add(ResourceType.Coal, _initialResources[3]);
 
+       // ResourceInventory[ResourceType.Coal] = 10;
+
        UIManager.Instance.UpdateResourceText();
     }
 
