@@ -30,10 +30,6 @@ public class WinCondition : MonoBehaviour
 
     private void EndGame()
     {
-        // TODO: actually show stuff
-
-        // For now: restart scene
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        UIManager.Instance.TurnOnWinCanvas();
     }
 }

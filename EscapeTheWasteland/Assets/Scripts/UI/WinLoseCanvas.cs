@@ -36,6 +36,7 @@ public class WinLoseCanvas : MonoBehaviour
     public void Restart()
     {
         // restart the scene
+        Time.timeScale = 1;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

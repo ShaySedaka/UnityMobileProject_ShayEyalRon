@@ -42,8 +42,17 @@ public class UIManager : Singleton<UIManager>
         _upgradeCanvas.SetActive(false);
     }
 
-    public void TurnOnWinLoseCanvas()
+    public void TurnOnWinCanvas()
     {
+        Time.timeScale = 0;
         _winLoseCanvas.SetActive(true);
+        _winLoseCanvas.GetComponent<WinLoseCanvas>().SetWinData();
+    }
+
+    public void TurnOnLoseCanvas()
+    {
+        Time.timeScale = 0;
+        _winLoseCanvas.SetActive(true);
+        _winLoseCanvas.GetComponent<WinLoseCanvas>().SetLoseData();
     }
 }

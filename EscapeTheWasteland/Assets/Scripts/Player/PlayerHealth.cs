@@ -33,7 +33,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnPlayerDeath()
     {
-        Time.timeScale = 0;
-        UIManager.Instance.TurnOnWinLoseCanvas();
+        UIManager.Instance.TurnOnLoseCanvas();
     }
 }
