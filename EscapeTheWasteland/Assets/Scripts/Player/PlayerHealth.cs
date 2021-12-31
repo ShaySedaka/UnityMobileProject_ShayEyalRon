@@ -8,12 +8,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int _maxHP = 10;
     [SerializeField] int _hp;
 
-    [SerializeField] HealthbarBehavior _healthBar;
+    [SerializeField] PlayerHealthBar _healthBar;
 
     private void Start()
     {
         _hp = _maxHP;
-        _healthBar.SetHealth(_maxHP, _maxHP);
+        _healthBar.SetHealth(_hp, _maxHP);
     }
 
     public void TakeDamage(int damage)
