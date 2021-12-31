@@ -15,7 +15,7 @@ public static class BalanceSettings
                                                         new UpgradeCost(12, 7, 0, 0),
                                                         new UpgradeCost(10, 10, 10, 0) };
 
-    public static int[] GunDamageByLevel = { 1, 2, 3, 4 };
+    public static int[] GunDamageByLevel = { 2, 3, 4, 5 };
 
     public static float[] PickaxeMineSpeedByLevel = { 0, 50f, 100f, 150f };
 

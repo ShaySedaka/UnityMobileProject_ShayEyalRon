@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 2415480602282245615}
   - component: {fileID: 2415480602282245614}
   - component: {fileID: 2415480602282245613}
+  - component: {fileID: 9223064261310175049}
   m_Layer: 0
   m_Name: Player Bullet
   m_TagString: Untagged
@@ -261,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpeed: 15
+  _bulletDamage: 0
 --- !u!61 &2415480602282245613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -287,6 +289,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &9223064261310175049
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415480602282245611}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &2415480602443925673
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,18 +443,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _runSpeed: 3
-  _pickAxeLevel: 3
   _miningRadius: 1.2
   _miningLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  _hp: 10
-  _fireRateInSeconds: 0.5
   _detectionRadius: 5
   _bulletPrefab: {fileID: 2415480602282245611}
   _miningEffect: {fileID: 2415480602810056936}
   _pickaxeSprite: {fileID: 2415480602443925673}
   _gunSprite: {fileID: 2415480601011141759}
+  _inventory: {fileID: 0}
 --- !u!50 &2415480602587665176
 Rigidbody2D:
   serializedVersion: 4

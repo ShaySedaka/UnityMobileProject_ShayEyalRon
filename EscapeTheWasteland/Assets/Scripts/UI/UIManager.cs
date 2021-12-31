@@ -8,6 +8,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private PlayerInventory _playerInventory;
     [SerializeField] private GameObject _upgradeCanvas;
     [SerializeField] private GameObject _winLoseCanvas;
+    [SerializeField] private GameObject _hudCanvas;
     
 
     [SerializeField] public TextMeshProUGUI _woodText;
@@ -45,6 +46,7 @@ public class UIManager : Singleton<UIManager>
     public void TurnOnWinCanvas()
     {
         Time.timeScale = 0;
+        _hudCanvas.SetActive(false);
         _winLoseCanvas.SetActive(true);
         _winLoseCanvas.GetComponent<WinLoseCanvas>().SetWinData();
     }
@@ -52,6 +54,7 @@ public class UIManager : Singleton<UIManager>
     public void TurnOnLoseCanvas()
     {
         Time.timeScale = 0;
+        _hudCanvas.SetActive(false);
         _winLoseCanvas.SetActive(true);
         _winLoseCanvas.GetComponent<WinLoseCanvas>().SetLoseData();
     }
