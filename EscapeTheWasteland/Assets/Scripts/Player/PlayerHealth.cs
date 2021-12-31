@@ -8,9 +8,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int _maxHP = 10;
     [SerializeField] int _hp;
 
+    [SerializeField] HealthbarBehavior _healthBar;
+
     private void Start()
     {
         _hp = _maxHP;
+        _healthBar.SetHealth(_maxHP, _maxHP);
     }
 
     public void TakeDamage(int damage)
@@ -18,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player hit with damage: " + damage);
 
         _hp -= damage;
+        _healthBar.SetHealth(_hp, _maxHP);
 
         if (_hp <= 0)
         {
@@ -29,6 +33,8 @@ public class PlayerHealth : MonoBehaviour
         _hp += health;
         if(_hp >= _maxHP)
             _hp = _maxHP;
+
+        _healthBar.SetHealth(_hp, _maxHP);
         Debug.Log($"player health is {_hp}");
     }
 

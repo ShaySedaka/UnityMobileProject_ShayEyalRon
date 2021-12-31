@@ -9,7 +9,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 { 
-    [SerializeField] int _hp = 5;
+    [SerializeField] int _currentHP = 5;
+    [SerializeField] int _maxHP = 5;
     [SerializeField] float _fireRateInSeconds = 0.6f;
     [SerializeField] float _detectionRadius = 20f;
     [SerializeField] int _bulletDamage = 1;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject _alertEffect;
     [SerializeField] GameObject _bulletPrefab;
+    [SerializeField] HealthbarBehavior _healthbar;
 
     private EnemyState _currentState;
     private GameObject _detectedPlayer;
@@ -28,6 +30,8 @@ public class Enemy : MonoBehaviour
     {
         _currentState = EnemyState.IDLE;
         _timeToNextShot = 0;
+        _currentHP = _maxHP;
+        _healthbar.SetHealth(_maxHP, _maxHP);
     }
 
     void OnDrawGizmos()
@@ -127,9 +131,10 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Enemy hit with damage: " + damage);
 
-        _hp -= damage;
+        _currentHP -= damage;
+        _healthbar.SetHealth(_currentHP, _maxHP);
 
-        if(_hp <= 0)
+        if(_currentHP <= 0)
         {
             OnEnemyDeath();
         }
