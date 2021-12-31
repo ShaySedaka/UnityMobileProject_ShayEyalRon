@@ -12,8 +12,10 @@ public enum ResourceType
 
 public class Resource : MonoBehaviour
 {
-    [SerializeField]
-    private int _health = 5;
+    [SerializeField] private int _health = 5;
+    [SerializeField] private int _maxHP = 5;
+
+    [SerializeField] HealthbarBehavior _healthbar;
 
     [SerializeField]
     private ResourceType _type;
@@ -24,9 +26,17 @@ public class Resource : MonoBehaviour
     public ResourceType Type { get => _type; }
     public int RequiredPickaxeLevelToMine { get => _requiredPickaxeLevelToMine;}
 
+
+    private void Start()
+    {
+        _health = _maxHP;
+        _healthbar.SetHealth(_health, _maxHP);
+    }
+
     public void AttemptToMine(PlayerController player)
     {
         _health--;
+        _healthbar.SetHealth(_health, _maxHP);
         if (_health <= 0)
         {
             gameObject.SetActive(false);
