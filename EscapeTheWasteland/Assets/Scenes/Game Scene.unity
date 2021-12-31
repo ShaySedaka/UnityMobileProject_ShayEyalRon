@@ -19080,7 +19080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd07c6bda3642e64b878fb4e98782b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHP: 5
+  _maxHP: 20
+  _hp: 10
 --- !u!114 &1347740523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21042,6 +21043,7 @@ GameObject:
   - component: {fileID: 1671450015}
   - component: {fileID: 1671450014}
   - component: {fileID: 1671450013}
+  - component: {fileID: 1671450016}
   m_Layer: 0
   m_Name: Player Bullet
   m_TagString: Untagged
@@ -21154,6 +21156,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1671450016
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671450011}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1680265710
 GameObject:
   m_ObjectHideFlags: 0

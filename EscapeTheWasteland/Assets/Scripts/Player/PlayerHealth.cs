@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int _maxHP = 10;
-    int _hp;
-    PlayerHealth()
+    [SerializeField] int _hp;
+
+    private void Start()
     {
         _hp = _maxHP;
     }
