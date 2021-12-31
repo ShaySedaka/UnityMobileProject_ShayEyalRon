@@ -46,7 +46,7 @@ public class VirtualJoystick : MonoBehaviour
                     Vector2 touchPosition2 = _mainCamera.ScreenToWorldPoint(touch.position);
                     Vector2 delta = touchPosition2 - Vector2Position;
 
-                    if(delta.magnitude <= _radius / 4)
+                    if(delta.magnitude <= _radius / 10)
                     {
                         break;
                     }
