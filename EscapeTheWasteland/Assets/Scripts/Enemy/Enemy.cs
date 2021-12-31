@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject _alertEffect;
     [SerializeField] GameObject _bulletPrefab;
     [SerializeField] HealthbarBehavior _healthbar;
+    [SerializeField] ParticleSystem _bloodEffect;
 
     private EnemyState _currentState;
     private GameObject _detectedPlayer;
@@ -133,6 +134,7 @@ public class Enemy : MonoBehaviour
 
         _currentHP -= damage;
         _healthbar.SetHealth(_currentHP, _maxHP);
+        _bloodEffect.Play();
 
         if(_currentHP <= 0)
         {
