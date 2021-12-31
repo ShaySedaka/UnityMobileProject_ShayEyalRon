@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(DestroyAfterSecs(3f));
+        Destroy(gameObject, 3f);
     }
 
 
@@ -37,13 +37,6 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(_bulletDamage);
         }
 
-        Destroy(gameObject);
-    }
-
-
-    public IEnumerator DestroyAfterSecs(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }
 }

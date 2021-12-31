@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4774444384103430061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.53, y: 0.35049817, z: -3.1078222}
+  m_LocalPosition: {x: -7.53, y: 0.35049817, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4774444385364057506}
@@ -55,7 +55,6 @@ MonoBehaviour:
   _healthAmountDrop: 3
   _alertEffect: {fileID: 4774444384229804544}
   _bulletPrefab: {fileID: 4774444385739890449}
-  _healthPack: {fileID: 2739037694811973057, guid: a27b4baf637c5e3498999de5c941f494, type: 3}
 --- !u!50 &6718238644572985711
 Rigidbody2D:
   serializedVersion: 4
@@ -5001,6 +5000,7 @@ GameObject:
   - component: {fileID: 4774444385739890453}
   - component: {fileID: 4774444385739890450}
   - component: {fileID: 4774444385739890451}
+  - component: {fileID: 7967529300345573267}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -5113,3 +5113,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6554412, y: 1.6476302}
   m_EdgeRadius: 0
+--- !u!50 &7967529300345573267
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4774444385739890449}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
