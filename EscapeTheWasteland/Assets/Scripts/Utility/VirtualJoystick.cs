@@ -46,19 +46,28 @@ public class VirtualJoystick : MonoBehaviour
                     Vector2 touchPosition2 = _mainCamera.ScreenToWorldPoint(touch.position);
                     Vector2 delta = touchPosition2 - Vector2Position;
 
-                    if (delta.magnitude <= _radius)
+                    if(delta.magnitude <= _radius / 2)
                     {
-                        _joyButton.transform.position = touchPosition2;
+                        break;
                     }
                     else
                     {
-                        _joyButton.transform.position = transform.position + (new Vector3(delta.normalized.x, delta.normalized.y) * _radius);
+                        if (delta.magnitude <= _radius)
+                        {
+                            _joyButton.transform.position = touchPosition2;
+                        }
+                        else
+                        {
+                            _joyButton.transform.position = transform.position + (new Vector3(delta.normalized.x, delta.normalized.y) * _radius);
+                        }
+
+                        _player.MovePlayer(delta.normalized);
+                        MoveJoystickWithPlayer(delta.normalized);
+
+                        break;
                     }
 
-                    _player.MovePlayer(delta.normalized);
-                    MoveJoystickWithPlayer(delta.normalized);
 
-                    break;
             }
            
         }
