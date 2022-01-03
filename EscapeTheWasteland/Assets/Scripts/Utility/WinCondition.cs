@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class WinCondition : MonoBehaviour
 {
-   [SerializeField] int _rarestResourceAmount = 3;
+    [SerializeField] int _rarestResourceAmount = 3;
+    [SerializeField] PlayableDirector _endClipDirector;
+    [SerializeField] Cinemachine.CinemachineVirtualCamera _virtualCamera;
+    [SerializeField] GameObject _car;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -31,5 +35,13 @@ public class WinCondition : MonoBehaviour
     private void EndGame()
     {
         UIManager.Instance.TurnOnWinCanvas();
+        ActivateCinematic();
+
+    }
+    private void ActivateCinematic()
+    {
+        _virtualCamera.Follow = _car.transform;
+        _virtualCamera.LookAt = _car.transform;
+        _endClipDirector.Play();
     }
 }
