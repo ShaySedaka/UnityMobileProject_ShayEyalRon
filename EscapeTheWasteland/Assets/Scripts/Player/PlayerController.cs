@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
 
     public float RunSpeed { get => _runSpeed;}
     public PlayerInventory Inventory { get => _inventory; }
-
+    public void Awake()
+    {
+        Time.timeScale = 1;
+    }
     void Update()
     {
         ScoutForEnemy();

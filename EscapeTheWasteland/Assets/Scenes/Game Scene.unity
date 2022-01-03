@@ -15452,6 +15452,7 @@ MonoBehaviour:
   _endClipDirector: {fileID: 1288863356}
   _virtualCamera: {fileID: 1699370131}
   _car: {fileID: 1288863350}
+  _player: {fileID: 1347740516}
 --- !u!95 &1288863355
 Animator:
   serializedVersion: 3

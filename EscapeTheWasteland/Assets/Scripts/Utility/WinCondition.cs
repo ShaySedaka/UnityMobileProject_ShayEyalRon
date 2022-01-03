@@ -10,6 +10,7 @@ public class WinCondition : MonoBehaviour
     [SerializeField] PlayableDirector _endClipDirector;
     [SerializeField] Cinemachine.CinemachineVirtualCamera _virtualCamera;
     [SerializeField] GameObject _car;
+    [SerializeField] GameObject _player;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -42,6 +43,13 @@ public class WinCondition : MonoBehaviour
     {
         _virtualCamera.Follow = _car.transform;
         _virtualCamera.LookAt = _car.transform;
+        _player.transform.SetParent(_car.transform);
+        _player.transform.localPosition = new Vector3(0,0,0);
+        _player.transform.rotation = new Quaternion(0,0,142,0);
         _endClipDirector.Play();
+    }
+    public void StopTime()
+    {
+        Time.timeScale = 0;
     }
 }

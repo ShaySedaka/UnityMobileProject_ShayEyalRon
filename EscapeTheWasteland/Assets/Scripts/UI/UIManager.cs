@@ -49,7 +49,6 @@ public class UIManager : Singleton<UIManager>
 
     public void TurnOnWinCanvas()
     {
-        Time.timeScale = 0;
         _hudCanvas.SetActive(false);
         _winLoseCanvas.SetActive(true);
         _winLoseCanvas.GetComponent<WinLoseCanvas>().SetWinData();
