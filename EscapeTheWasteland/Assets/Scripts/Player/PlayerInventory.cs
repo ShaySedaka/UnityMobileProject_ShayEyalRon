@@ -66,5 +66,6 @@ public class PlayerInventory : MonoBehaviour
     {
         UpgradeCost nextUpgrade = BalanceSettings.PickaxeUpgradeCosts[Pickaxe.Level];
         AttemptToUpgradeTool(Pickaxe, nextUpgrade);
+        UIManager.Instance.OnPickaxeUpgrade(Pickaxe.Level);
     }
 }

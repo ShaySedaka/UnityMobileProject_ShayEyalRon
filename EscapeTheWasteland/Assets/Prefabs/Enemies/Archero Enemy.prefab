@@ -55,6 +55,7 @@ MonoBehaviour:
   _fireRateInSeconds: 1.2
   _detectionRadius: 8
   _bulletDamage: 3
+  _potionDropPercent: 60
   _healthAmountDrop: 3
   _alertEffect: {fileID: 4774444384229804544}
   _bulletPrefab: {fileID: 4774444385739890449}

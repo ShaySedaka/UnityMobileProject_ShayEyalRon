@@ -9,7 +9,11 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject _upgradeCanvas;
     [SerializeField] private GameObject _winLoseCanvas;
     [SerializeField] private GameObject _hudCanvas;
-    
+
+    [SerializeField] private GameObject _stonePanel;
+    [SerializeField] private GameObject _ironPanel;
+    [SerializeField] private GameObject _coalPanel;
+
 
     [SerializeField] public TextMeshProUGUI _woodText;
     [SerializeField] public TextMeshProUGUI _stoneText;
@@ -58,4 +62,21 @@ public class UIManager : Singleton<UIManager>
         _winLoseCanvas.SetActive(true);
         _winLoseCanvas.GetComponent<WinLoseCanvas>().SetLoseData();
     }
+
+    public void OnPickaxeUpgrade(int level)
+    {
+        switch (level)
+        {
+            case 1:
+                _stonePanel.SetActive(true);
+                break;
+            case 2:
+                _ironPanel.SetActive(true);
+                break;
+            case 3:
+                _coalPanel.SetActive(true);
+                break;
+        }
+    }
+
 }

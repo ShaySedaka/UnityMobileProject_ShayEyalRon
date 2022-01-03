@@ -51,10 +51,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHP: 5
-  _maxHP: 5
+  _maxHP: 6
   _fireRateInSeconds: 0.6
   _detectionRadius: 6
   _bulletDamage: 2
+  _potionDropPercent: 60
   _healthAmountDrop: 1
   _alertEffect: {fileID: 4774444384229804544}
   _bulletPrefab: {fileID: 4774444385739890449}
