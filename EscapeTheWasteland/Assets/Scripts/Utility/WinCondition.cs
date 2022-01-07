@@ -11,6 +11,12 @@ public class WinCondition : MonoBehaviour
     [SerializeField] Cinemachine.CinemachineVirtualCamera _virtualCamera;
     [SerializeField] GameObject _car;
     [SerializeField] GameObject _player;
+    [SerializeField] GameObject _showWinConUI;
+
+    private void Update()
+    {
+        _showWinConUI.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 4, 0));
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,9 +27,23 @@ public class WinCondition : MonoBehaviour
             {
                 EndGame();
             }
+            else
+            {
+                ToggleWinConditionUI(true);
+            }
         }
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            if (_showWinConUI.activeSelf == true)
+            {
+                ToggleWinConditionUI(false);
+            }
+        }
+    }
     private bool CheckWinCondition(PlayerController player)
     {
         if(player.Inventory.ResourceInventory[ResourceType.Coal] >= _rarestResourceAmount)
@@ -31,6 +51,11 @@ public class WinCondition : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void ToggleWinConditionUI(bool toggleState)
+    {
+        _showWinConUI.SetActive(toggleState);
     }
 
     private void EndGame()
