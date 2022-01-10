@@ -16,13 +16,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _pickaxeSprite;
     [SerializeField] private GameObject _gunSprite;
 
+
     [SerializeField] private PlayerInventory _inventory;
 
     private Collider2D[] _collidersWithinRange;
    
     private float _timeSinceLastMine = 1;
 
-    
+    private bool _gunOut = false;
 
     private GameObject _detectedEnemy;
     private float _timeToNextShot = 0f;
@@ -39,7 +40,10 @@ public class PlayerController : MonoBehaviour
 
         if(!_detectedEnemy)
         {
-            StartCoroutine(PutGunAway());
+            if (_gunOut == true)
+            {
+                StartCoroutine(PutGunAway());
+            }
             AttemptToMineResourcesAroundPlayer();
         }
         else
@@ -136,14 +140,17 @@ public class PlayerController : MonoBehaviour
 
     private void PullOutGun()
     {
+        _gunOut = true;
         _pickaxeSprite.SetActive(false);
         _gunSprite.SetActive(true);
     }
 
     private IEnumerator PutGunAway()
     {
+
         yield return new WaitForSeconds(1.5f);
         _gunSprite.SetActive(false);
+        _gunOut = false;
     }
 
     private void ScoutForEnemy()

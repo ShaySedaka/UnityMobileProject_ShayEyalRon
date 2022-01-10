@@ -9,6 +9,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject _upgradeCanvas;
     [SerializeField] private GameObject _winLoseCanvas;
     [SerializeField] private GameObject _hudCanvas;
+    [SerializeField] private GameObject _TutorialCanvas;
 
     [SerializeField] private GameObject _stonePanel;
     [SerializeField] private GameObject _ironPanel;
